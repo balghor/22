@@ -15,6 +15,12 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string("full_name");
+            $table->string("username");
+            $table->string("password");
+            $table->enum("type",['ProjectUser','VIP','Manager','User']);
+            $table->string("access_project")->nullable();
+            $table->enum("active",['enabled','disabled'])->default("enabled");
             $table->timestamps();
         });
     }
