@@ -18,10 +18,10 @@ class CreateMediasTable extends Migration
             $table->string("filename");
             $table->string("extension");
             $table->string("mime");
-            $table->string("description");
+            $table->string("description")->nullable();
             $table->string("path");
-            $table->string("size");
-            $table->integer("project_id");
+            $table->string("size")->nullable();
+            $table->integer("project_id")->nullable();
             $table->integer("user_id");
             $table->timestamps();
         });
