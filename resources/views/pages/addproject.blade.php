@@ -25,6 +25,7 @@
                                   <option value="{{ $item }}">{{$value['ProjectName']}}</option>
                                   @endforeach
                           </select>
+                          <button class="btn btn-sm btn-ghost-info" onclick="updateform()">بروزرسانی</button>
                       </div>
 
                       <div class="clearfix">&nbsp;</div>

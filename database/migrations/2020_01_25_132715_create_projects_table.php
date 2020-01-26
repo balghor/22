@@ -25,8 +25,7 @@ class CreateProjectsTable extends Migration
             $table->integer("user_id");
             $table->string("physical_progress");
             $table->text("cost");
-            $table->boolean("active")->default(true);
-
+            $table->integer("active")->default("1");
             $table->timestamps();
         });
     }
