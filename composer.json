@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2",
         "fideloper/proxy": "^4.0",
+        "fruitcake/laravel-cors": "^1.0",
         "hekmatinasser/verta": "^1.10",
         "illuminate/database": "^6.12",
         "illuminate/mail": "^6.12",
