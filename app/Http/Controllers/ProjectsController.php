@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\projects;
 use Illuminate\Http\Request;
+use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 class ProjectsController extends Controller
 {
@@ -25,6 +26,7 @@ class ProjectsController extends Controller
     public function create()
     {
         //
+            return view("pages.addproject");
     }
 
     /**
@@ -36,6 +38,27 @@ class ProjectsController extends Controller
     public function store(Request $request)
     {
         //
+        if ($request->has('project_name') &&
+            $request->has('start_date') &&
+            $request->has('end_date') &&
+            $request->has('physical_progress') &&
+            $request->has('cost') &&
+            $request->has('active_state')){
+            $project = new projects();
+            $project->project_name = $request->input('project_name');
+            $project->start_date = $request->input('start_date');
+            $project->end_date = $request->input('end_date');
+            $project->physical_progress = $request->input('physical_progress');
+            $project->cost = $request->input('cost');
+            $project->active = $request->input('active_state');
+            $project->description = $request->input('description');
+            $project->detail = $request->input('detail');
+            $project->cp_id = $request->input('cp_id');
+            $project->album = " ";
+            $project->user_id = "0";
+            $project->save();
+            return redirect()->route("project.create")->send();
+        }
     }
 
     /**
@@ -82,4 +105,5 @@ class ProjectsController extends Controller
     {
         //
     }
+
 }

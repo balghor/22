@@ -52,6 +52,8 @@ class AjaxController extends Controller
                 $Project["EndDate"] = $enddate->format("Y/m/d");
                 $Project['Physical']= @max($real);
                 $Project['Financial']= $MaliPrecent;
+                $Project['finished']= $value['compeleted'];
+                $Project['description']= strip_tags($value['information']);
                 return response($Project,200);
             }
         }

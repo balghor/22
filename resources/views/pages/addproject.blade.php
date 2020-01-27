@@ -7,25 +7,23 @@
         <div class="fade-in">
             <div class="card">
                 <div class="card-body">
-                  <form action="" method="post">
+                  <form action="{{ route("project.store") }}" method="post">
                     @csrf
-                    @method("POST")
                       <div class="card-header">
                           <h6>افزودن پروژه</h6>
                       </div>
                       <div class="clearfix">&nbsp;</div>
                       <label for="project_cp_id">پروژه مورد نظر را جهت بروزرسانی انتخاب نمایید</label>
                       <div class="clearfix">
-                          <select id="project_cp_id" class="select listproject">
+                          <select id="project_cp_id" name="cp_id" class="select listproject">
                               <?php
                               $project = file_get_contents("http://cp.sazmanomran.org/ceo/index/record/list/project/");
                               $List = json_decode($project,true);
                               ?>
                               @foreach($List as $item => $value)
-                                  <option value="{{ $item }}">{{$value['ProjectName']}}</option>
+                                  <option value="{{ $value['ID'] }}">{{$value['ProjectName']}}</option>
                                   @endforeach
                           </select>
-                          <button class="btn btn-sm btn-ghost-info" onclick="updateform()">بروزرسانی</button>
                       </div>
 
                       <div class="clearfix">&nbsp;</div>
@@ -92,15 +90,15 @@
                       </div>
                       <div class="clearfix">&nbsp;</div>
                               <div class="custom-control-inline custom-radio mr-3">
-                                  <input type="radio" class="custom-control-input" id="ccv1" name="active_state" required>
+                                  <input type="radio" class="custom-control-input" id="ccv1" name="active_state" value="0" required>
                                   <label class="custom-control-label" for="ccv1">عدم انتشار</label>
                               </div>
                               <div class="custom-control-inline custom-radio mr-5">
-                                  <input type="radio" class="custom-control-input" id="ccv2" name="active_state" checked required>
+                                  <input type="radio" class="custom-control-input" id="ccv2" name="active_state" value="1" checked required>
                                   <label class="custom-control-label" for="ccv2">انتشار</label>
                               </div>
                               <div class="custom-control-inline custom-radio mr-5">
-                                  <input type="radio" class="custom-control-input" id="ccv3" name="active_state" required>
+                                  <input type="radio" class="custom-control-input" id="ccv3" name="active_state" value="2" required>
                                   <label class="custom-control-label" for="ccv3">اتمام یافته</label>
                               </div>
                        <div class="clearfix">&nbsp;</div>
@@ -144,7 +142,11 @@
     <script src="{{ asset('js/pace.min.js') }}"></script>
     <script src="{{ asset('js/coreui.min.js') }}"></script>
     <script src="{{ asset('js/ckeditor.js') }}"></script>
-    <script>ClassicEditor
+    <script>
+        function saveData(str){
+            $("#detail").val(str)
+        }
+        ClassicEditor
             .create( document.querySelector( '.editor' ), {
 
                 toolbar: {

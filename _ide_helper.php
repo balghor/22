@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.12.0 on 2020-01-26 14:03:25.
+ * Generated for Laravel 6.12.0 on 2020-01-27 06:12:56.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -14333,6 +14333,18 @@ namespace Illuminate\Support {
  
 }
 
+namespace Hekmatinasser\Verta { 
+
+    /**
+     * 
+     *
+     */ 
+    class Verta {
+         
+    }
+ 
+}
+
 namespace Barryvdh\Debugbar { 
 
     /**
@@ -14934,18 +14946,6 @@ namespace Barryvdh\Debugbar {
                         /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
                         return $instance->offsetUnset($key);
         }
-         
-    }
- 
-}
-
-namespace Hekmatinasser\Verta { 
-
-    /**
-     * 
-     *
-     */ 
-    class Verta {
          
     }
  
@@ -18094,9 +18094,9 @@ namespace  {
 
     class View extends \Illuminate\Support\Facades\View {}
 
-    class Debugbar extends \Barryvdh\Debugbar\Facade {}
-
     class Verta extends \Hekmatinasser\Verta\Verta {}
+
+    class Debugbar extends \Barryvdh\Debugbar\Facade {}
 
     class Flare extends \Facade\Ignition\Facades\Flare {}
  
