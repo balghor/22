@@ -1,5 +1,5 @@
 $(".jalali-date-input").persianDatepicker({
-    observer: true,
+    initialValue: false,
     format: 'YYYY/MM/DD',
 });
 $('.select').select2();
@@ -23,4 +23,11 @@ $(".listproject").on('select2:select', function (e) {
         $("#description").val(data.description);
     })
 });
-
+function deleteitem() {
+    state = confirm('آیا از حذف این مورد اطمینان دارید؟')
+    if(state == true){
+        return true;
+    }else{
+    return false;
+    }
+}

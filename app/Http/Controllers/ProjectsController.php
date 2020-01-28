@@ -16,6 +16,9 @@ class ProjectsController extends Controller
     public function index()
     {
         //
+        $projects = projects::orderByDesc('id')->paginate(20);
+
+        return view("pages.manageproject",compact("projects"));
     }
 
     /**
@@ -78,9 +81,11 @@ class ProjectsController extends Controller
      * @param  \App\projects  $projects
      * @return \Illuminate\Http\Response
      */
-    public function edit(projects $projects)
+    public function edit($id)
     {
         //
+           $projects = projects::findOrFail($id);
+        return view("pages.editproject",compact("projects"));
     }
 
     /**
@@ -93,6 +98,7 @@ class ProjectsController extends Controller
     public function update(Request $request, projects $projects)
     {
         //
+
     }
 
     /**

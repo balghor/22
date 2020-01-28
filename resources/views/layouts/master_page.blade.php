@@ -33,12 +33,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="theme-color" content="#ffffff">
     <!-- Icons-->
-    <link href="{{ asset('css/fontface.css') }}" rel="stylesheet"> <!-- icons -->
-    <link href="{{ asset('css/coreui.min.css') }}" rel="stylesheet"> <!-- icons -->
-    <link href="{{ asset('css/all.min.css') }}" rel="stylesheet"> <!-- icons -->
-    <link href="{{ asset('css/pace.min.css') }}" rel="stylesheet"> <!-- icons -->
-    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet"> <!-- icons -->
-    <link href="{{ asset('css/persian-datepicker.css') }}" rel="stylesheet"> <!-- icons -->
+    <link href="{{ asset('css/fontface.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/coreui.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/pace.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/persian-datepicker.css') }}" rel="stylesheet">
     <!-- Main styles for this application-->
     @yield('css')
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -65,13 +65,13 @@
 </div>
 
 
-@yield('javascript')
 <script type="text/javascript" src="{{ asset("js/jquery.min.js") }}"></script>
 <script type="text/javascript" src="{{ asset("js/bootstrap.min.js") }}"></script>
 <script type="text/javascript" src="{{ asset("js/persian-date.js") }}"></script>
 <script type="text/javascript" src="{{ asset("js/persian-datepicker.js") }}"></script>
 <script type="text/javascript" src="{{ asset("js/sweetalert.min.js") }}"></script>
 <script type="text/javascript" src="{{ asset("js/select2.min.js") }}"></script>
+@yield('javascript')
 <script type="text/javascript" src="{{ asset("js/main.js") }}"></script>
 </body>
 </html>

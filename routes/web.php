@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function (){});
 
-Route::resource("/project","ProjectsController");
+Route::resource("/project", "ProjectsController");
 
 Route::get("/add2album","AlbumModifyController@album_page")->name('add2album');
 

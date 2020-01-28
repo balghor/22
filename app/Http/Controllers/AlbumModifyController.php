@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\medias;
 use App\projects;
 use Illuminate\Http\Request;
+use PHPUnit\Util\Json;
 
 class AlbumModifyController extends Controller
 {
@@ -44,6 +45,7 @@ class AlbumModifyController extends Controller
                     $media->user_id = $user_id;
                     $media->save();
                 }
+                \DB::table("projects")->where("id","=",$project_id)->update(["album"=>\Psy\Util\Json::encode($images)]);
                 return redirect(route("add2album")."?id=".$project_id)->with("images",$images)->send();
             }
         }
