@@ -15,6 +15,9 @@ class UsersController extends Controller
     public function index()
     {
         //
+        $users = users::orderByDesc('id')->paginate(20);
+
+        return view("pages.manageuser",compact("users"));
     }
 
     /**
@@ -25,6 +28,7 @@ class UsersController extends Controller
     public function create()
     {
         //
+        return view("pages.adduser");
     }
 
     /**

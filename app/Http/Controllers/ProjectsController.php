@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\projects;
 use Illuminate\Http\Request;
-use SebastianBergmann\CodeCoverage\Report\Xml\Project;
-
 class ProjectsController extends Controller
 {
     /**
@@ -46,21 +44,26 @@ class ProjectsController extends Controller
             $request->has('end_date') &&
             $request->has('physical_progress') &&
             $request->has('cost') &&
-            $request->has('active_state')){
+            $request->has('active_state')) {
             $project = new projects();
-            $project->project_name = $request->input('project_name');
-            $project->start_date = $request->input('start_date');
-            $project->end_date = $request->input('end_date');
-            $project->physical_progress = $request->input('physical_progress');
-            $project->cost = $request->input('cost');
-            $project->active = $request->input('active_state');
-            $project->description = $request->input('description');
-            $project->detail = $request->input('detail');
-            $project->cp_id = $request->input('cp_id');
-            $project->album = " ";
-            $project->user_id = "0";
-            $project->save();
-            return redirect()->route("project.create")->send();
+            $existProject = projects::where("cp_id","=",$request->input('cp_id'))->count();
+            if ($existProject == 0) {
+                $project->project_name = $request->input('project_name');
+                $project->start_date = $request->input('start_date');
+                $project->end_date = $request->input('end_date');
+                $project->physical_progress = $request->input('physical_progress');
+                $project->cost = $request->input('cost');
+                $project->active = $request->input('active_state');
+                $project->description = $request->input('description');
+                $project->detail = $request->input('detail');
+                $project->cp_id = $request->input('cp_id');
+                $project->album = " ";
+                $project->user_id = "0";
+                $project->save();
+                return redirect()->route("project.create")->send();
+            }else{
+                return redirect()->back()->with("warning","پروژه انتخاب شده قبل در لیست وجود دارد")->send();
+            }
         }
     }
 
@@ -98,7 +101,22 @@ class ProjectsController extends Controller
     public function update(Request $request, projects $projects)
     {
         //
+        if ($request->has('start_date') &&
+            $request->has('end_date') &&
+            $request->has('physical_progress') &&
+            $request->has('cost') &&
+            $request->has('active_state')) {
+            \DB::table("projects")->where("id","=",$request->id)->update([
+            "start_date" => $request->input('start_date'),
+            "end_date" => $request->input('end_date'),
+            "physical_progress" => $request->input('physical_progress'),
+            "cost" => $request->input('cost'),
+            "active" => $request->input('active_state'),
+            "description" => $request->input('description'),
+            "detail" => $request->input('detail')]);
+            return redirect()->route("project.index")->send();
 
+        }
     }
 
     /**
@@ -107,9 +125,11 @@ class ProjectsController extends Controller
      * @param  \App\projects  $projects
      * @return \Illuminate\Http\Response
      */
-    public function destroy(projects $projects)
+    public function destroy($id)
     {
         //
+        projects::destroy($id);
+        return  redirect()->back()->with("state","اطلاعات مورد نظر با موفقیت حذف شد")->send();
     }
 
 }

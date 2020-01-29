@@ -10,13 +10,14 @@
                   <form action="{{ route('project.update',$projects) }}" method="post">
                     @csrf
                       @method("PUT")
+                      <input type="hidden" name="id" value="{{ $projects->id }}">
                       <div class="card-header">
                           <h6>ویرایش پروژه <i class="badge badge-pill"> {{ $projects->project_name }}</i></h6>
                       </div>
                       <div class="clearfix">&nbsp;</div>
                       <label for="project_cp_id">پروژه مورد نظر را جهت بروزرسانی انتخاب نمایید</label>
                       <div class="clearfix">
-                          <select id="project_cp_id" name="cp_id" class="select listproject">
+                          <select id="project_cp_id" name="cp_id" class="select listproject" disabled>
                               <?php
                               $project = file_get_contents("http://cp.sazmanomran.org/ceo/index/record/list/project/");
                               $List = json_decode($project,true);
@@ -37,7 +38,7 @@
                                       <span class="c-icon cil-center-focus"></span>
                                     </span>
                                   </div>
-                                  <input class="form-control" type="text" id="project_name" placeholder="نام پروژه" name="project_name" value="{{ $projects->project_name }}" required autofocus>
+                                  <input class="form-control" type="text" id="project_name" placeholder="نام پروژه" name="project_name" readonly value="{{ $projects->project_name }}" required autofocus>
                               </div>
                           </div>
                       </div>

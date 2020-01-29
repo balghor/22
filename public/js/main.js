@@ -2,7 +2,7 @@ $(".jalali-date-input").persianDatepicker({
     initialValue: false,
     format: 'YYYY/MM/DD',
 });
-$('.select').select2();
+$('.select,.select2').select2();
 
 $(".listproject").on('select2:select', function (e) {
     var data = e.params.data;

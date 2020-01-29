@@ -17,6 +17,8 @@ Route::get('/', function (){});
 
 Route::resource("/project", "ProjectsController");
 
+Route::resource("/user", "UsersController");
+
 Route::get("/add2album","AlbumModifyController@album_page")->name('add2album');
 
 Route::post("/add2album/create","AlbumModifyController@add2album")->name("album_create");

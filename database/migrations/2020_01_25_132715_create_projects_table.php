@@ -21,7 +21,7 @@ class CreateProjectsTable extends Migration
             $table->dateTime("end_date");
             $table->longText("album");
             $table->longText("description");
-            $table->longText("detail");
+            $table->longText("detail")->nullable();
             $table->integer("user_id");
             $table->string("physical_progress");
             $table->text("cost");
