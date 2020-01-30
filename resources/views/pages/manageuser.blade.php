@@ -42,7 +42,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <input type="hidden" value="{{ $List->id }}" name="id">
-                                            <a class="btn btn-sm btn-outline-warning align-baseline" href="{{ route("user.edit",$List->id) }}"><span class="c-icon cil-pencil"></span></a>
+                                            <a class="btn btn-sm btn-outline-warning align-baseline" href="{{ route("user.edit",$List) }}"><span class="c-icon cil-pencil"></span></a>
                                             <button type="submit" class="btn btn-sm btn-outline-danger align-baseline" ><span class="c-icon cil-remove" ></span></button>
                                         </form>
                                     </td>

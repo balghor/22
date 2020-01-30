@@ -5,40 +5,35 @@
 
     <div class="container-fluid">
         <div class="fade-in">
-            <div class="row">
-                <div class="col-sm-6 col-lg-6">
-                    <div class="card text-white bg-primary">
-                        <div class="card-body pb-0">
-                            <div class="text-value-lg">9.823</div>
-                            <div>تعداد پروژه</div>
-                        </div>
-                        <div class="c-chart-wrapper mt-3 mx-3" style="height:70px;">
-                            <canvas class="chart" id="card-chart1" height="70"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.col-->
-                <div class="col-sm-6 col-lg-6">
-                    <div class="card text-white bg-info">
-                        <div class="card-body pb-0">
-                            <div class="text-value-lg">9.823</div>
-                            <div>تعداد کاربران</div>
-                        </div>
-                        <div class="c-chart-wrapper mt-3 mx-3" style="height:70px;">
-                            <canvas class="chart" id="card-chart2" height="70"></canvas>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
             <!-- /.row-->
             <div class="card">
                 <div class="card-body">
-                    <div class="row">
-
-                        <!-- /.col-->
+                    <div class="card-header">
+                        <h6>افزودن عکس به آلبوم پروژه : </h6>
                     </div>
-                    <!-- /.row-->
+                    <form action="{{ route("album_create") }}" method="post" enctype="multipart/form-data">
+                        <div class="">
+                            <br>
+                            <h6>امکان انتخاب چند عکس به صورت همزمان وجود دارد</h6>
+                            <div class="col-8">
+                                @csrf
+                                <input type="hidden" name="pid" value="{{ $item->id }}">
+                                <input type="hidden" name="description" value="{{ $item->project_name }}">
+                                <div class="row" style="padding-top:10px;">
+                                    <div class="col-1">
+                                        <input type="file" class="btn btn-large btn-primary" name="album[]" multiple accept="image/jpeg" id="album" placeholder="فایل مورد نظر را انتخاب نمایید">
+                                    </div>
+                                    <div class="col-5">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">&nbsp;</div>
+                        </div>
+                    <div class="card-footer">
+                        <input type="submit" name="submit" value="ثبت" class="btn btn-info">
+                    </div>
+                    </form>
+
 
                 </div>
             </div>
