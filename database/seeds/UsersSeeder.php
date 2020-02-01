@@ -17,7 +17,7 @@ class UsersSeeder extends Seeder
             "username"=>'admin',
             "password"=>Hash::make('123'),
             "type"=>'Manager',
-            "access_project"=>'Manager',
+            "access_project"=>'',
             "active"=>'enabled'
         ]);
     }

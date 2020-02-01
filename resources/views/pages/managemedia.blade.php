@@ -16,7 +16,7 @@
                             </div>
                             <div class="col justify-content-lg-end">
                                 <div class="card-header-action">
-                                    <form action="" name="search" method="get">
+                                    <form action="{{ route("media.index") }}" name="search" method="get">
                                         <div class="input-group">
                                             <input class="form-control" name="find" type="text"
                                                    placeholder="برای جستجو وارد نمایید">

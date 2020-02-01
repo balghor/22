@@ -12,11 +12,15 @@ class MediasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
         $medias = new medias();
-        $files = $medias->orderByDesc("id")->paginate(30);
+        if ($request->has("find")){
+            $files = $medias->where("description","LIKE","%".$request->input("find")."%")->orderByDesc("id")->paginate(30);
+        }else{
+            $files = $medias->orderByDesc("id")->paginate(30);
+        }
         return view("pages.managemedia",compact("files"));
     }
 

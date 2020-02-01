@@ -22,7 +22,7 @@
                             <div class="clearfix">&nbsp;</div>
                         @endif
                         <div class="row">
-                            ٬@if($users->count())
+                            @if($users->count())
                             <table id="datatable_users" class="table table-clear table-hover table-responsive-lg table-bordered" >
                                 <thead>
                                 <tr>

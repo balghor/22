@@ -16,7 +16,7 @@ class LoginController extends Controller
     public function DoLogin(Request $request)
     {
         if (!empty($request->username) && !empty($request->password)) {
-            $User = users::where("username", "=", $request->post('username'))->first();
+            $User = users::where("username", "=", $request->post('username'))->whereIn("type",["Manager","ProjectUser"])->first();
             if (!is_null($User)) {
                 if (\Hash::check($request->post("password"), $User->password)) {
                     session()->put('UserData', $User);

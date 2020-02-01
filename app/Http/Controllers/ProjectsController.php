@@ -14,7 +14,19 @@ class ProjectsController extends Controller
     public function index()
     {
         //
-        $projects = projects::orderByDesc('id')->paginate(20);
+        if(session("UserData")->type=="Manager") {
+
+            $projects = projects::orderByDesc('id')->paginate(20);
+
+        }else{
+            if(session("UserData")->type=="ProjectUser") {
+                if (empty(trim(session("UserData")->access_project))){
+                    $projects = projects::orderByDesc('id')->paginate(20);
+                }else{
+                    $projects = projects::whereIn("cp_id",explode(",",session("UserData")->access_project))->orderByDesc('id')->paginate(20);
+                }
+            }
+        }
 
         return view("pages.manageproject",compact("projects"));
     }
@@ -27,7 +39,11 @@ class ProjectsController extends Controller
     public function create()
     {
         //
+        if(session("UserData")->type=="Manager") {
             return view("pages.addproject");
+        }else{
+            return redirect()->route("dashboard");
+        }
     }
 
     /**
@@ -87,8 +103,13 @@ class ProjectsController extends Controller
     public function edit($id)
     {
         //
-           $projects = projects::findOrFail($id);
+        if(session("UserData")->type=="Manager" || session("UserData")->type=="ProjectUser") {
+
+            $projects = projects::findOrFail($id);
         return view("pages.editproject",compact("projects"));
+        }else{
+            return redirect()->route("dashboard");
+        }
     }
 
     /**
@@ -128,8 +149,13 @@ class ProjectsController extends Controller
     public function destroy($id)
     {
         //
-        projects::destroy($id);
+        if(session("UserData")->type=="Manager" || session("UserData")->type=="ProjectUser") {
+
+            projects::destroy($id);
         return  redirect()->back()->with("state","اطلاعات مورد نظر با موفقیت حذف شد")->send();
+        }else{
+            return redirect()->route("dashboard");
+        }
     }
 
 }

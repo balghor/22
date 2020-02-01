@@ -14,6 +14,7 @@ use App\Http\Middleware;
 */
 
 Route::get('/', function () {
+    return view("pages.general.Home");
 });
 
 Route::get("/login", "LoginController@ShowLogin")->name("show_login");

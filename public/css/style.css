@@ -1,4 +1,21 @@
+.homeBody{
+    margin: 0;
+    padding: 0;
+}
 .bgclass{
     background: url("../img/bg.jpg") no-repeat center;
     background-size: cover;
 }
+#home{
+    background: url("../img/building.png") no-repeat center;
+    background-size: cover ;
+    height: 600px;
+    width: 100%;
+}
+#projects{
+    background: url("../img/wp1842363.png") no-repeat center;
+    background-size: cover ;
+    height: 800px;
+    width: 100%;
+}
+
