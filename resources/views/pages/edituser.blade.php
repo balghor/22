@@ -114,7 +114,7 @@
 
 @section('javascript')
 
-    <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('js/pace.min.js') }}"></script>
-    <script src="{{ asset('js/coreui.min.js') }}"></script>
+    <script src="{{ asset('public/js/popper.min.js') }}"></script>
+    <script src="{{ asset('public/js/pace.min.js') }}"></script>
+    <script src="{{ asset('public/js/coreui.min.js') }}"></script>
 @endsection

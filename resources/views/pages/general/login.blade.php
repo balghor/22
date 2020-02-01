@@ -5,52 +5,64 @@
 @section('content')
 
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card-group">
-            <div class="card p-4">
-              <div class="card-body">
-                <h1>سامانه اطلاع رسانی پروژه های سازمان عمران</h1>
-                <p class="text-muted">اطلاعات خود را وارد نمایید</p>
-                <form method="POST" action="">
-                    @csrf
-                    <div class="input-group mb-3">
-                    <div class="input-group-prepend">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card-group">
+                    <div class="card p-4">
+                        <div class="card-body">
+                            <h1>سامانه اطلاع رسانی پروژه های سازمان عمران</h1>
+                            <p class="text-muted">اطلاعات خود را وارد نمایید</p>
+                            @if( session("state"))
+                                <div class="clearfix">&nbsp;</div>
+                                <div class="alert alert-primary" role="alert">
+                                    {{ session("state") }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="clearfix">&nbsp;</div>
+                            @endif
+                            @if( session("error"))
+                                <div class="clearfix">&nbsp;</div>
+                                <div class="alert alert-danger" role="alert">
+                                    {{ session("state") }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="clearfix">&nbsp;</div>
+                            @endif
+                            <form method="POST" action="{{ route("doing") }}">
+                                @csrf
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
                         <span class="input-group-text">
                         <i class="c-icon cil-user"></i>
                         </span>
-                    </div>
-                    <input class="form-control" type="text" placeholder="" name="email" value="{{ old('email') }}" required autofocus>
-                    @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    </div>
-                    <div class="input-group mb-4">
-                    <div class="input-group-prepend">
+                                    </div>
+                                    <input class="form-control" type="text" placeholder="نام کاربری " name="username"
+                                           value="{{ old('username') }}"  required autofocus>
+                                </div>
+                                <div class="input-group mb-4">
+                                    <div class="input-group-prepend">
                         <span class="input-group-text">
                         <i class="c-icon cil-lock-locked"></i>
                         </span>
+                                    </div>
+                                    <input class="form-control" type="password" placeholder="کلمه عبور" name="password" required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <button class="btn btn-primary px-4" type="submit">ورود</button>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <input class="form-control" type="password" placeholder="" name="password" required>
-                    @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    </div>
-                    <div class="row">
-                    <div class="col-6">
-                        <button class="btn btn-primary px-4" type="submit">ورود</button>
-                    </div>
-                    </form>
-                    </div>
-              </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
 
 @endsection

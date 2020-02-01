@@ -5,7 +5,7 @@
             <div class="col justify-content-lg-start">
                 <button class="c-header-toggler c-class-toggler d-lg-none mr-auto" type="button" data-target="#sidebar"
                         data-class="c-sidebar-show"><span class="c-header-toggler-icon"></span></button>
-                <a class="c-header-brand d-sm-none" href="#"><img class="c-header-brand" src="{{ asset("img/min_logo.png") }}"
+                <a class="c-header-brand d-sm-none" href="#"><img class="c-header-brand" src="{{ asset("public/img/min_logo.png") }}"
                                                                   width="97" height="46" alt=""></a>
                 <button class="c-header-toggler c-class-toggler ml-3 d-md-down-none" type="button" data-target="#sidebar"
                         data-class="c-sidebar-lg-show" responsive="true"><span class="c-header-toggler-icon"></span>
@@ -15,14 +15,14 @@
                 <ul class="c-header-nav float-md-left">
                     <li class="c-header-nav-item dropdown"><a class="c-header-nav-link" data-toggle="dropdown" href="#"
                                                               role="button" aria-haspopup="true" aria-expanded="false">
-                            <div class="c-avatar"><img class="c-avatar-img" src="{{ asset("img/avatar.png") }}" alt="user">
+                            <div class="c-avatar"><img class="c-avatar-img" src="{{ asset("public/img/avatar.png") }}" alt="user">
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-left pt-0">
                             <div class="dropdown-header bg-light py-2 text-lg-right"><strong>حساب کاربری</strong></div>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="{{ route("change_password_show") }}">
                                 تغییر کلمه عبور</a>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="{{ route("logout") }}">
                                 خروج</a>
                         </div>
                     </li>

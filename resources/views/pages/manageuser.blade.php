@@ -11,7 +11,18 @@
                         <h6>مدیریت کاربران</h6>
                     </div>
                     <div class="container-fluid">
+                        @if( session("state"))
+                            <div class="clearfix">&nbsp;</div>
+                            <div class="alert alert-primary" role="alert">
+                                {{ session("state") }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="clearfix">&nbsp;</div>
+                        @endif
                         <div class="row">
+                            ٬@if($users->count())
                             <table id="datatable_users" class="table table-clear table-hover table-responsive-lg table-bordered" >
                                 <thead>
                                 <tr>
@@ -60,6 +71,9 @@
                                 </tr>
                                 </tfoot>
                             </table>
+                            @else
+                                <h5 class="text-center">موردی برای نمایش یافت نشد</h5>
+                            @endif
                         </div>
 
                     </div>
@@ -75,8 +89,8 @@
 
 @section('javascript')
 
-    <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('js/pace.min.js') }}"></script>
-    <script src="{{ asset('js/coreui.min.js') }}"></script>
+    <script src="{{ asset('public/js/popper.min.js') }}"></script>
+    <script src="{{ asset('public/js/pace.min.js') }}"></script>
+    <script src="{{ asset('public/js/coreui.min.js') }}"></script>
 
 @endsection

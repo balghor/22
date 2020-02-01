@@ -9,8 +9,17 @@
             <div class="card">
                 <div class="card-body">
                     <div class="card-header">
-                        <h6>افزودن عکس به آلبوم پروژه : </h6>
+                        <h6>افزودن عکس به آلبوم پروژه  </h6>
                     </div>
+                    @if( session("state"))
+                        <div class="alert alert-primary" role="alert">
+                            {{ session("state") }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="clearfix">&nbsp;</div>
+                    @endif
                     <form action="{{ route("album_create") }}" method="post" enctype="multipart/form-data">
                         <div class="">
                             <br>
@@ -44,7 +53,7 @@
 
 @section('javascript')
 
-    <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('js/pace.min.js') }}"></script>
-    <script src="{{ asset('js/coreui.min.js') }}"></script>
+    <script src="{{ asset('public/js/popper.min.js') }}"></script>
+    <script src="{{ asset('public/js/pace.min.js') }}"></script>
+    <script src="{{ asset('public/js/coreui.min.js') }}"></script>
 @endsection

@@ -4,25 +4,6 @@ $(".jalali-date-input").persianDatepicker({
 });
 $('.select,.select2').select2();
 
-$(".listproject").on('select2:select', function (e) {
-    var data = e.params.data;
-    $.get("/ajax/load_project",{id:data.id},function (data) {
-        $("#project_name").val(data.ProjectName);
-        $("#start_date").val(data.StartDate);
-        $("#end_date").val(data.EndDate);
-        $("#physical_progress").val(data.Physical);
-        $("#cost").val(data.Financial);
-        if(data.finished=="0"){
-            $("#ccv2").select();
-            $("#ccv2").click();
-        }
-        if(data.finished=="1"){
-            $("#ccv3").select();
-            $("#ccv3").click();
-        }
-        $("#description").val(data.description);
-    })
-});
 function deleteitem() {
     state = confirm('آیا از حذف این مورد اطمینان دارید؟')
     if(state == true){
@@ -30,4 +11,18 @@ function deleteitem() {
     }else{
     return false;
     }
+}
+function copy(sender,el) {
+    /* Get the text field */
+    var copyText = document.getElementById(el);
+
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+    /* Copy the text inside the text field */
+    document.execCommand("copy");
+
+    /* Alert the copied text */
+    $(sender).html("کپی شد!");
 }

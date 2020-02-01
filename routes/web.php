@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Middleware;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,16 +13,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function (){});
+Route::get('/', function () {
+});
 
-Route::resource("/project", "ProjectsController");
+Route::get("/login", "LoginController@ShowLogin")->name("show_login");
+Route::post("/doing_login", "LoginController@DoLogin")->name("doing");
+Route::get("/logout", "LoginController@logout")->name("logout");
 
-Route::resource("/user", "UsersController");
+Route::middleware("Dologin")->group(function () {
+    Route::get("/dashboard", "LoginController@ShowDashboard")->name("dashboard");
+    Route::get("/change_password", "LoginController@changePassowrdShow")->name("change_password_show");
+    Route::post("/set_new_password", "LoginController@changePassowrd")->name("set_password");
 
-Route::get("/add2album","AlbumModifyController@album_page")->name('add2album');
+    Route::resource("/project", "ProjectsController");
 
-Route::post("/add2album/create","AlbumModifyController@add2album")->name("album_create");
+    Route::resource("/user", "UsersController");
+    Route::resource("/media", "MediasController");
 
-Route::prefix("ajax")->group(function (){
-    Route::get("load_project","AjaxController@LoadProject")->name("load_project_id");
+    Route::get("/add2album/{id}", "AlbumModifyController@album_page")->name('add2album');
+
+    Route::post("/add2album/create", "AlbumModifyController@add2album")->name("album_create");
+
+    Route::prefix("ajax")->group(function () {
+        Route::get("load_project", "AjaxController@LoadProject")->name("load_project_id");
+        Route::get("delete_file", "AjaxController@delete_file")->name("delete_file");
+    });
 });

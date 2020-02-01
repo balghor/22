@@ -15,6 +15,9 @@ class MediasController extends Controller
     public function index()
     {
         //
+        $medias = new medias();
+        $files = $medias->orderByDesc("id")->paginate(30);
+        return view("pages.managemedia",compact("files"));
     }
 
     /**
@@ -25,6 +28,8 @@ class MediasController extends Controller
     public function create()
     {
         //
+        return view("pages.addmedia");
+
     }
 
     /**
@@ -35,7 +40,40 @@ class MediasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //set php.ini
+        //upload_max_filesize = 200M
+        //max_file_upload = 20
+        //post_max_size = 200M
+        //memory_limit = 320M
+        if ($request->hasFile('file')) {
+            $images = array();
+            if ($files = $request->file('file')) {
+                $project_id=0;
+                foreach ($files as $file) {
+                    $name = $file->getClientOriginalName();
+                    $extension = $file->getClientOriginalExtension();
+                    $mime = $file->getMimeType();
+                    $description = $request->description;
+                    $path = strip_tags(time()."_".rand(0,9000).$file->getClientOriginalName());
+                    $size = $file->getSize();
+                    $user_id = session("UserData")->id;
+                    $images[]=$path;
+                    $file->move('uploads', $path);
+                    $media = new medias();
+                    $media->filename = $name;
+                    $media->extension = $extension;
+                    $media->mime = $mime;
+                    $media->description = $description;
+                    $media->path = $path;
+                    $media->size = $size;
+                    $media->project_id = $project_id;
+                    $media->user_id = $user_id;
+                    $media->save();
+                }
+                return redirect()->route("media.create")->with("state","فایل ها بارگزاری شد")->send();
+            }
+        }
+
     }
 
     /**
@@ -47,6 +85,7 @@ class MediasController extends Controller
     public function show(medias $medias)
     {
         //
+
     }
 
     /**

@@ -9,7 +9,7 @@
                 <div class="col-sm-6 col-lg-6">
                     <div class="card text-white bg-primary">
                         <div class="card-body pb-0">
-                            <div class="text-value-lg">9.823</div>
+                            <div class="text-value-lg">{{ $data['projectsCount'] }}</div>
                             <div>تعداد پروژه</div>
                         </div>
                         <div class="c-chart-wrapper mt-3 mx-3" style="height:70px;">
@@ -21,7 +21,7 @@
                 <div class="col-sm-6 col-lg-6">
                     <div class="card text-white bg-info">
                         <div class="card-body pb-0">
-                            <div class="text-value-lg">9.823</div>
+                            <div class="text-value-lg">{{ $data['userCount'] }}</div>
                             <div>تعداد کاربران</div>
                         </div>
                         <div class="c-chart-wrapper mt-3 mx-3" style="height:70px;">
@@ -49,7 +49,7 @@
 
 @section('javascript')
 
-    <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('js/pace.min.js') }}"></script>
-    <script src="{{ asset('js/coreui.min.js') }}"></script>
+    <script src="{{ asset('public/js/popper.min.js') }}"></script>
+    <script src="{{ asset('public/js/pace.min.js') }}"></script>
+    <script src="{{ asset('public/js/coreui.min.js') }}"></script>
 @endsection

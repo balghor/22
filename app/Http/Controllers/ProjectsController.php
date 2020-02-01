@@ -58,11 +58,11 @@ class ProjectsController extends Controller
                 $project->detail = $request->input('detail');
                 $project->cp_id = $request->input('cp_id');
                 $project->album = " ";
-                $project->user_id = "0";
+                $project->user_id = session("UserData")->id;
                 $project->save();
-                return redirect()->route("project.create")->send();
+                return redirect()->route("project.create")->with("state","پروژه با موفقیت ثبت شد")->send();
             }else{
-                return redirect()->back()->with("warning","پروژه انتخاب شده قبل در لیست وجود دارد")->send();
+                return redirect()->back()->with("state","پروژه انتخاب شده قبل در لیست وجود دارد")->send();
             }
         }
     }
@@ -114,7 +114,7 @@ class ProjectsController extends Controller
             "active" => $request->input('active_state'),
             "description" => $request->input('description'),
             "detail" => $request->input('detail')]);
-            return redirect()->route("project.index")->send();
+            return redirect()->route("project.index")->with("state","پروژه با موفقیت ویرایش شد")->send();
 
         }
     }

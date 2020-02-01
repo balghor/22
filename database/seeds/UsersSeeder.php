@@ -12,5 +12,13 @@ class UsersSeeder extends Seeder
     public function run()
     {
         //
+        DB::table("users")->insert([
+            "full_name"=>'مدیرکل',
+            "username"=>'admin',
+            "password"=>Hash::make('123'),
+            "type"=>'Manager',
+            "access_project"=>'Manager',
+            "active"=>'enabled'
+        ]);
     }
 }

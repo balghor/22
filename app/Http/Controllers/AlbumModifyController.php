@@ -10,9 +10,9 @@ use PHPUnit\Util\Json;
 class AlbumModifyController extends Controller
 {
     //
-    public  function album_page(Request $request){
-        if ($request->has("id")){
-            $item = \DB::table("projects")->where("id","=",$request->id)->first();
+    public  function album_page(Request $request,$id){
+        if ($id){
+            $item = \DB::table("projects")->where("id","=",$id)->first();
                 return view("pages.add2album",compact("item"));
         }
     }
@@ -31,7 +31,7 @@ class AlbumModifyController extends Controller
                     $path = strip_tags(time()."_".rand(0,9000).$file->getClientOriginalName());
                     $size = $file->getSize();
                     $project_id = $request->pid;
-                    $user_id = "0";
+                    $user_id = session("UserData")->id;
                     $images[]=$path;
                     $file->move('uploads', $path);
                     $media = new medias();
@@ -46,7 +46,7 @@ class AlbumModifyController extends Controller
                     $media->save();
                 }
                 \DB::table("projects")->where("id","=",$project_id)->update(["album"=>\Psy\Util\Json::encode($images)]);
-                return redirect(route("add2album")."?id=".$project_id)->with("images",$images)->send();
+                return redirect(route("project.index"))->with("state","عکس ها با موفقیت اضافه شد")->send();
             }
         }
     }

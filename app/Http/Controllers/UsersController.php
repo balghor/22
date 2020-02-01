@@ -56,9 +56,9 @@ class UsersController extends Controller
                 $users->active = $request->input('active');
                 $users->access_project = $request->input('access_project');
                 $users->save();
-                return redirect()->route("user.create")->send();
+                return redirect()->route("user.create")->with("state","کاربر با موفقیت اضافه شد")->send();
             }else{
-                return redirect()->back()->with("warning","کاربر انتخاب شده قبل در لیست وجود دارد")->send();
+                return redirect()->back()->with("state","کاربر انتخاب شده قبل در لیست وجود دارد")->send();
             }
 
         }
@@ -114,7 +114,7 @@ class UsersController extends Controller
                 }
                 \DB::table("users")->where("id","=",$request->input("id"))->update($arrayList);
 
-                return redirect()->route("user.index")->send();
+                return redirect()->route("user.index")->with("state","تغییرات با موفقیت ثبت شد")->send();
             }
     }
 

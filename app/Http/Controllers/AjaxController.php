@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\medias;
 use Illuminate\Http\Request;
 use Hekmatinasser\Verta\Verta;
+use Illuminate\Support\Facades\File;
 
 class AjaxController extends Controller
 {
@@ -56,6 +58,14 @@ class AjaxController extends Controller
                 $Project['description']= strip_tags($value['information']);
                 return response($Project,200);
             }
+        }
+    }
+
+    public function delete_file(Request $request){
+        if(!empty($request->id)){
+            $Item = medias::findOrFail($request->id);
+            File::delete(("uploads/".$Item->path));
+            $Item->delete();
         }
     }
 }

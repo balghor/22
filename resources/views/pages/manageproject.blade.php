@@ -11,7 +11,18 @@
                         <h6>مدیریت پروژه ها</h6>
                     </div>
                     <div class="container-fluid">
+                        @if( session("state"))
+                            <div class="clearfix">&nbsp;</div>
+                            <div class="alert alert-primary" role="alert">
+                                {{ session("state") }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="clearfix">&nbsp;</div>
+                        @endif
                         <div class="row">
+                            @if($projects->count())
                             <table id="datatable_projects" class="table table-clear table-hover table-responsive-lg table-bordered" >
                                 <thead>
                                 <tr>
@@ -43,6 +54,7 @@
                                             @method('DELETE')
                                             <input type="hidden" value="{{ $List->id }}" name="id">
                                             <a class="btn btn-sm btn-outline-warning align-baseline" href="{{ route("project.edit",$List->id) }}"><span class="c-icon cil-pencil"></span></a>
+                                            <a class="btn btn-sm btn-outline-primary align-baseline" href="{{ route("add2album",$List) }}"><span class="c-icon cil-image-plus"></span></a>
                                             <button type="submit" class="btn btn-sm btn-outline-danger align-baseline" ><span class="c-icon cil-remove" ></span></button>
                                         </form>
                                     </td>
@@ -62,6 +74,9 @@
                                 </tr>
                                 </tfoot>
                             </table>
+                            @else
+                                <h5 class="text-center">موردی برای نمایش یافت نشد</h5>
+                            @endif
                         </div>
 
                     </div>
@@ -77,8 +92,8 @@
 
 @section('javascript')
 
-    <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('js/pace.min.js') }}"></script>
-    <script src="{{ asset('js/coreui.min.js') }}"></script>
+    <script src="{{ asset('public/js/popper.min.js') }}"></script>
+    <script src="{{ asset('public/js/pace.min.js') }}"></script>
+    <script src="{{ asset('public/js/coreui.min.js') }}"></script>
 
 @endsection
