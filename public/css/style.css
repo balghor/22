@@ -9,13 +9,43 @@
 #home{
     background: url("../img/building.png") no-repeat center;
     background-size: cover ;
-    height: 600px;
+    min-height: 600px;
     width: 100%;
 }
 #projects{
     background: url("../img/wp1842363.png") no-repeat center;
     background-size: cover ;
-    height: 800px;
+    min-height: 100% !important;
+    height: 100% !important;
+    width: 100%;
+}
+#pr{
+    background: url("../img/wp1842340.jpg") no-repeat center;
+    background-size: cover ;
+    min-height: 100% !important;
+    height: 100% !important;
     width: 100%;
 }
 
+.swiper-container {
+    width: 100%;
+    height: 400px;
+    display: block;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+}
+.fillbackpie{
+    padding: 5px;
+    border-radius: 10px;
+    background: rgba(255,253,245,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(255,253,245,1) 0%, rgba(245,237,155,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,253,245,1)), color-stop(100%, rgba(245,237,155,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(255,253,245,1) 0%, rgba(245,237,155,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(255,253,245,1) 0%, rgba(245,237,155,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(255,253,245,1) 0%, rgba(245,237,155,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(255,253,245,1) 0%, rgba(245,237,155,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffdf5', endColorstr='#f5ed9b', GradientType=1 );
+}

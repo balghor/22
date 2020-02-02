@@ -1,8 +1,9 @@
-$(".jalali-date-input").persianDatepicker({
-    initialValue: false,
-    format: 'YYYY/MM/DD',
-});
+$(".jalali-date-input").persianDatepicker({ formatDate: "YYYY/0M/0D",onShow: function () {
+        selectedDate:$(this).val();
+    } });
 $('.select,.select2').select2();
+
+
 
 function deleteitem() {
     state = confirm('آیا از حذف این مورد اطمینان دارید؟')

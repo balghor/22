@@ -67,7 +67,6 @@
 
 <script type="text/javascript" src="{{ asset("public/js/jquery.min.js") }}"></script>
 <script type="text/javascript" src="{{ asset("public/js/bootstrap.min.js") }}"></script>
-<script type="text/javascript" src="{{ asset("public/js/persian-date.js") }}"></script>
 <script type="text/javascript" src="{{ asset("public/js/persian-datepicker.js") }}"></script>
 <script type="text/javascript" src="{{ asset("public/js/sweetalert.min.js") }}"></script>
 <script type="text/javascript" src="{{ asset("public/js/select2.min.js") }}"></script>

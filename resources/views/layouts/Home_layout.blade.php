@@ -31,13 +31,21 @@
     <meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <!-- Icons-->
-    <link href="{{ asset('public/css/fontface.css') }}" rel="stylesheet"> <!-- icons -->
-    <link href="{{ asset('public/css/coreui.min.css') }}" rel="stylesheet"> <!-- icons -->
-    <link href="{{ asset('public/css/all.min.css') }}" rel="stylesheet"> <!-- icons -->
-    <link href="{{ asset('public/css/pace.min.css') }}" rel="stylesheet"> <!-- icons -->
+    <link href="{{ asset('public/css/fontface.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/css/coreui.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/css/pace.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/css/flipdown.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/css/swiper.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/css/Chart.min.css') }}" rel="stylesheet">
     <!-- Main styles for this application-->
     @yield('css')
     <link href="{{ asset('public/css/style.css') }}" rel="stylesheet">
+    <script type="text/javascript" src="{{ asset("public/js/smooth-scroll.polyfills.min.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("public/js/core.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("public/js/charts.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("public/js/material.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("public/js/animated.js") }}"></script>
 </head>
 
 
@@ -50,5 +58,25 @@
     @include('shared.footer')
 
 @yield('javascript')
+<script type="text/javascript" src="{{ asset("public/js/flipdown.js") }}"></script>
+<script type="text/javascript" src="{{ asset("public/js/swiper.min.js") }}"></script>
+            <script>
+                var swiper = new Swiper('.swiper-container', {
+                    spaceBetween: 30,
+                    centeredSlides: true,
+                    autoplay: {
+                        delay: 2500,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                });
+            </script>
 </body>
 </html>

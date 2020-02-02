@@ -13,9 +13,9 @@ use App\Http\Middleware;
 |
 */
 
-Route::get('/', function () {
-    return view("pages.general.Home");
-});
+Route::get('/', "HomeController@HomeIndex")->name("Home");
+Route::get('/project_show/{id}', "HomeController@project")->name("projectShow");
+
 
 Route::get("/login", "LoginController@ShowLogin")->name("show_login");
 Route::post("/doing_login", "LoginController@DoLogin")->name("doing");

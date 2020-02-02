@@ -17,8 +17,8 @@ class CreateProjectsTable extends Migration
             $table->bigIncrements("id");
             $table->text("project_name");
             $table->integer("cp_id");
-            $table->dateTime("start_date");
-            $table->dateTime("end_date");
+            $table->string("start_date");
+            $table->string("end_date");
             $table->longText("album");
             $table->longText("description");
             $table->longText("detail")->nullable();
