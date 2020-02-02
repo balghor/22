@@ -65,11 +65,6 @@
                           <div class="col-6">
                               <label for="type">نوع دسترسی</label>
                               <div class="input-group mb-2">
-                                  <div class="input-group-prepend">
-                                      <span class="input-group-text">
-                                      <span class="c-icon cil-beach-access"></span>
-                                    </span>
-                                  </div>
                                   <select class="select2"  id="type" placeholder="نوع دسترسی" name="type" required autofocus style="width: 50%">
                                       <option value="VIP">کاربر ویژه VIP</option>
                                       <option value="Manager">مدیرکل</option>
@@ -80,13 +75,8 @@
                           </div><div class="col-6">
                               <label for="access_project">دسترسی به پروژه</label>
                               <div class="input-group mb-2">
-                                  <div class="input-group-prepend">
-                                      <span class="input-group-text">
-                                      <span class="c-icon cil-tags"></span>
-                                    </span>
-                                  </div>
                                   <select id="access_project" name="access_project" class="select listproject">
-                                      <option value="all" >همه پروژه ها</option>
+                                      <option value="" >همه پروژه ها</option>
                                   <?php
                                       $project = file_get_contents("http://cp.sazmanomran.org/ceo/index/record/list/project/");
                                       $List = json_decode($project,true);

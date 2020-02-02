@@ -1,6 +1,8 @@
 @extends('layouts.master_page')
 @component("")
-
+@section("css")
+    <link rel="stylesheet" href="{{ asset("public/css/trumbowyg.min.css") }}">
+@endsection
 @section('content')
 
     <div class="container-fluid">
@@ -121,7 +123,7 @@
                       <div class="row">
                           <div class="col-12">
                               <label for="detail"> جزئیات پروژه</label>
-                                  <textarea class="editor" placeholder="جزئیات پروژه" name="detail" id="detail">
+                                  <textarea class="summernote" placeholder="جزئیات پروژه" name="detail" id="detail">
                                       {!! $projects->detail  !!}
                                   </textarea>
                               </div>
@@ -145,77 +147,9 @@
     <script src="{{ asset('public/js/popper.min.js') }}"></script>
     <script src="{{ asset('public/js/pace.min.js') }}"></script>
     <script src="{{ asset('public/js/coreui.min.js') }}"></script>
-    <script src="{{ asset('public/js/ckeditor.js') }}"></script>
-    <script>
-        function saveData(str){
-            $("#detail").val(str)
-        }
-        ClassicEditor
-            .create( document.querySelector( '.editor' ), {
-
-                toolbar: {
-                    items: [
-                        'heading',
-                        '|',
-                        'bold',
-                        'italic',
-                        'link',
-                        'bulletedList',
-                        'numberedList',
-                        'fontSize',
-                        'fontBackgroundColor',
-                        'fontColor',
-                        'highlight',
-                        'underline',
-                        'removeFormat',
-                        '|',
-                        'alignment',
-                        'indent',
-                        'outdent',
-                        '|',
-                        'horizontalLine',
-                        'imageUpload',
-                        'blockQuote',
-                        'insertTable',
-                        'mediaEmbed',
-                        'undo',
-                        'redo'
-                    ]
-                },
-                language: 'fa',
-                image: {
-                    toolbar: [
-                        'imageTextAlternative',
-                        'imageStyle:full',
-                        'imageStyle:side'
-                    ]
-                },
-                table: {
-                    contentToolbar: [
-                        'tableColumn',
-                        'tableRow',
-                        'mergeTableCells'
-                    ]
-                },
-                licenseKey: '',
-                autosave: {
-                    save( editor ) {
-                   	return saveData( editor.getData() );
-                    },
-                	waitingTime: 21
-                		},
-
-            } )
-            .then( editor => {
-                window.editor = editor;
-
-
-
-
-            } )
-            .catch( error => {
-                console.error( error );
-            } );
+    <script src="{{ asset('public/js/trumbowyg.min.js") }}"></script>
+    <script src="{{ asset('public/js/langs/fa.min.js") }}"></script>
+<script type="text/javascript">
         $(".listproject").on('select2:select', function (e) {
             var data = e.params.data;
             $.get("{{ route("load_project_id") }}",{id:data.id},function (data) {
@@ -235,6 +169,8 @@
                 $("#description").val(data.description);
             })
         });
-
-    </script>
+        $('.summernote').trumbowyg({
+            lang:'fa',
+        });
+</script>
 @endsection
