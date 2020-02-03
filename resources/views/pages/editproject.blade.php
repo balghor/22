@@ -1,3 +1,6 @@
+@php
+use GuzzleHttp\Client;
+@endphp
 @extends('layouts.master_page')
 @component("")
 @section("css")
@@ -22,8 +25,9 @@
                       <div class="clearfix">
                           <select id="project_cp_id" name="cp_id" class="select listproject" disabled>
                               <?php
-                              $project = file_get_contents("http://cp.sazmanomran.org/ceo/index/record/list/project/");
-                              $List = json_decode($project,true);
+                              $client = new \GuzzleHttp\Client();
+                              $project = $client->request('GET', "http://cp.sazmanomran.org/ceo/index/record/list/project/");
+                              $List = json_decode($project->getBody(),true);
                               ?>
                               @foreach($List as $item => $value)
                                   <option value="{{ $value['ID'] }}" @if($projects->cp_id==$value['ID']) {{ "selected" }}   @endif>{{$value['ProjectName']}}</option>
