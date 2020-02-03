@@ -6,7 +6,7 @@
 * Copyright (c) 2019 creativeLabs Łukasz Holeczek
 * Licensed under MIT (https://coreui.io/license)
 -->
-
+@section("Title","سازمان عمران شهرداری مشهد")
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="utf-8">

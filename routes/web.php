@@ -19,6 +19,12 @@ Route::get('/project_show/{id}', "HomeController@project")->name("projectShow");
 
 Route::get("/login", "LoginController@ShowLogin")->name("show_login");
 Route::post("/doing_login", "LoginController@DoLogin")->name("doing");
+
+//vip login
+
+Route::get("/vip_login", "LoginController@ShowLoginVIP")->name("show_login_vip");
+Route::post("/vip_doing_login", "LoginController@DoLoginVIP")->name("doing_vip");
+
 Route::get("/logout", "LoginController@logout")->name("logout");
 
 Route::middleware("Dologin")->group(function () {

@@ -2,6 +2,7 @@
 @component("")
 @section("css")
     <link rel="stylesheet" href="{{ asset("public/css/trumbowyg.min.css") }}">
+    <link rel="stylesheet" href="{{ asset("public/js/plugins/table/ui/trumbowyg.table.css") }}">
 @endsection
 @section('content')
 
@@ -147,8 +148,17 @@
     <script src="{{ asset('public/js/popper.min.js') }}"></script>
     <script src="{{ asset('public/js/pace.min.js') }}"></script>
     <script src="{{ asset('public/js/coreui.min.js') }}"></script>
-    <script src="{{ asset('public/js/trumbowyg.min.js") }}"></script>
-    <script src="{{ asset('public/js/langs/fa.min.js") }}"></script>
+    <script src="{{ asset('public/js/trumbowyg.min.js') }}"></script>
+    <script src="{{ asset('public/js/langs/fa.min.js') }}"></script>
+    <script src="{{ asset('public/js/plugins/allowtagsfrompaste/trumbowyg.allowtagsfrompaste.js') }}"></script>
+    <script src="{{ asset('public/js/plugins/base64/trumbowyg.base64.js') }}"></script>
+    <script src="{{ asset('public/js/plugins/colors/trumbowyg.colors.js') }}"></script>
+    <script src="{{ asset('public/js/plugins/pasteembed/trumbowyg.pasteembed.js') }}"></script>
+    <script src="{{ asset('public/js/plugins/resizimg/resizable-resolveconflict.js') }}"></script>
+    <script src="{{ asset('public/js/plugins/resizimg/jquery-resizable.min.js') }}"></script>
+    <script src="{{ asset('public/js/plugins/resizimg/trumbowyg.resizimg.js') }}"></script>
+    <script src="{{ asset('public/js/plugins/table/trumbowyg.table.min.js') }}"></script>
+    <script src="{{ asset('public/js/plugins/noembed/trumbowyg.noembed.js') }}"></script>
 <script type="text/javascript">
         $(".listproject").on('select2:select', function (e) {
             var data = e.params.data;
@@ -171,6 +181,37 @@
         });
         $('.summernote').trumbowyg({
             lang:'fa',
-        });
+            btnsDef: {
+                // Create a new dropdown
+                image: {
+                    dropdown: ['insertImage', 'noembed','base64'],
+                    ico: 'insertImage'
+                }
+            },
+            // Redefine the button pane
+            btns: [
+                ['viewHTML'],
+                ['formatting'],
+                ['foreColor', 'backColor'],
+                ['strong', 'em', 'del'],
+                ['superscript', 'subscript'],
+                ['link'],
+                ['image'], // Our fresh created dropdown
+                ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+                ['unorderedList', 'orderedList'],
+                ['table'],
+                ['horizontalRule'],
+                ['removeformat'],
+                ['fullscreen']
+            ],
+            plugins: {
+                allowTagsFromPaste: {
+                    allowedTags: ['h4', 'p', 'br']
+                },
+                resizimg: {
+                    minSize: 64,
+                    step: 16,
+                }
+            }});
 </script>
 @endsection

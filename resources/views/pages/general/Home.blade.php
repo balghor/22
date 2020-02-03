@@ -12,19 +12,23 @@ use Hekmatinasser\Verta\Verta;
         <div class="c-header-nav">
             <a class="c-header-nav-item c-header-nav-link" data-scroll href="#home">خانه</a>
             <a class="c-header-nav-item c-header-nav-link" data-scroll href="#projects">پروژه ها</a>
-            <a class="c-header-nav-item c-header-nav-link" href="#">کاربران ویژه</a>
+            <a class="c-header-nav-item c-header-nav-link" href="{{ route("show_login_vip") }}">کاربران ویژه</a>
         </div>
     </header>
 <div id="home" class="homeBody">
     <div class="container-fluid">
         <div class="row mt-5">
-            <div class="col-sm-4">
+            <div class="col-lg-4 col-xl-4">
                 <img class="" src="{{ asset("/public/img/omranlogo1.png") }}" width="444" height="431">
             </div>
-            <div class="col-sm-5 mt-5">
-
-                        <h3 class="text-center text-white ">سامانه اطلاع رسانی پروژه ها و شفافیت عملکرد</h3>
-                        <h5 class="text-center text-white ">سازمان عمران شهرداری مشهد</h5>
+            <div class="col-lg-8 col-xl-5 mt-5">
+                        <div class="w-100"></div>
+                        <div class="d-flex">
+                            <div class="p-5">
+                                <h3 class="text-center text-white ">سامانه اطلاع رسانی پروژه ها و شفافیت عملکرد</h3>
+                                <h5 class="text-center text-white ">سازمان عمران شهرداری مشهد</h5>
+                            </div>
+                        </div>
 
             </div>
         </div>
@@ -33,10 +37,20 @@ use Hekmatinasser\Verta\Verta;
     <div class="clearfix"></div>
     <div id="projects">
         <div class="clearfix">&nbsp;</div>
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
+                @php
+                $counter=0;
+                @endphp
                 @foreach($projects as $item)
                     @php
+                    if($counter >=4){
+                            echo '<div class="w-100"></div>';
+                            $counter=1;
+                        }else{
+                            $counter++;
+                        }
+
                         $startDate = Verta::parse($item->start_date);
                         $today = new Verta();
                         $endDate = Verta::parse($item->end_date);
@@ -48,7 +62,7 @@ use Hekmatinasser\Verta\Verta;
                             <div class="card-img-top text-center align-content-center">
                                 @php
                                     $arrImage = @trim($item->album,"[]\"");
-                                    $pic = @explode(",",$arrImage);
+                                    $pic = @explode("\",\"",$arrImage);
                                 @endphp
                                 @if(@count($pic) && trim($pic[0])!="")
                                     <img src="{{ url("uploads/".$pic[0]) }}" style="width: 100%;height: 150px" >
@@ -90,5 +104,6 @@ use Hekmatinasser\Verta\Verta;
             speed: 500,
             speedAsDuration: true
         });
+        $('#loginmodal').modal()
     </script>
 @endsection

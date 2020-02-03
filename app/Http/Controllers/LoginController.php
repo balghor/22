@@ -29,6 +29,40 @@ class LoginController extends Controller
             }
         }
     }
+
+    /*
+     * VIP Login
+     *
+     */
+
+    public function ShowLoginVIP(){
+        return view("pages.general.LoginVIP");
+    }
+
+    public function DoLoginVIP(Request $request)
+    {
+        if (!empty($request->username) && !empty($request->password)) {
+            $User = users::where("username", "=", $request->post('username'))->where("type","VIP")->first();
+            if (!is_null($User)) {
+                if (\Hash::check($request->post("password"), $User->password)) {
+                    session()->put('VIPLogin', $User);
+                    return redirect()->route("Home")->send();
+                } else {
+                    return redirect()->route("show_login_vip")->with("error","نام کاربری یا کلمه عیور اشتباه است")->send();
+                }
+            }else{
+                return redirect()->route("show_login_vip")->with("error","نام کاربری یا کلمه عیور اشتباه است")->send();
+            }
+        }
+    }
+
+
+    /*
+     *
+     * End VIP Login
+     *
+     */
+
     public function changePassowrdShow(){
         return view("pages.changepassword");
     }
