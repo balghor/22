@@ -162,7 +162,7 @@ use GuzzleHttp\Client;
     <script src="{{ asset('public/js/plugins/resizimg/jquery-resizable.min.js') }}"></script>
     <script src="{{ asset('public/js/plugins/resizimg/trumbowyg.resizimg.js') }}"></script>
     <script src="{{ asset('public/js/plugins/table/trumbowyg.table.min.js') }}"></script>
-    <script src="{{ asset('public/js/plugins/noembed/trumbowyg.noembed.js') }}"></script>
+    <script src="{{ asset('public/js/plugins/insertvideo/trumbowyg.insertvideo.js') }}"></script>
 <script type="text/javascript">
         $(".listproject").on('select2:select', function (e) {
             var data = e.params.data;
@@ -188,7 +188,7 @@ use GuzzleHttp\Client;
             btnsDef: {
                 // Create a new dropdown
                 image: {
-                    dropdown: ['insertImage', 'noembed','base64'],
+                    dropdown: ['insertImage','base64'],
                     ico: 'insertImage'
                 }
             },
@@ -200,6 +200,7 @@ use GuzzleHttp\Client;
                 ['strong', 'em', 'del'],
                 ['superscript', 'subscript'],
                 ['link'],
+                ['insertVideo'],
                 ['image'], // Our fresh created dropdown
                 ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
                 ['unorderedList', 'orderedList'],
