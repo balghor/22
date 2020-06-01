@@ -13,6 +13,7 @@
                 @endif
             <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route("media.create") }}"><span class="c-sidebar-nav-icon c-icon cil-image-plus"></span>  افزودن رسانه</a></li>
             <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route("media.index") }}"><span class="c-sidebar-nav-icon c-icon cil-media-play"></span>  مدیریت رسانه</a></li>
+            <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route("comment.index") }}"><span class="c-sidebar-nav-icon c-icon cil-comment-bubble"></span>  مدیریت نظرات</a></li>
             <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route("logout") }}"><span class="c-sidebar-nav-icon c-icon cil-account-logout"></span>خروج </a></li>
 {{--            <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">--}}
 {{--                <a class="c-sidebar-nav-dropdown-toggle" href="#">--}}

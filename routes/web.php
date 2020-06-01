@@ -36,6 +36,9 @@ Route::middleware("Dologin")->group(function () {
 
     Route::resource("/user", "UsersController");
     Route::resource("/media", "MediasController");
+    Route::resource("/comment", "CommentController");
+    Route::resource("/category", "CategoryController");
+    Route::resource("/album", "AlbumController");
 
     Route::get("/add2album/{id}", "AlbumModifyController@album_page")->name('add2album');
 

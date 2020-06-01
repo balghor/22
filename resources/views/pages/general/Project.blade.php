@@ -258,6 +258,60 @@
                                         {!! $project->detail !!}
                                     </div>
                                 </div>
+                                <div class="clearfix">&nbsp;</div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-6 ">
+                                                        <ul class="card">
+                                                            <li class="p-3"><b>حسین میگه:</b> <ul>
+                                                                     <li class="card">باشه انجام میشخ</li>
+                                                                </ul></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-6 border-right">
+                                                            <div class="row">
+                                                                <div class="col-12 pr-4">
+                                                                    <h4>ثبت انتقادات ، نظرات یا پیشنهادات</h4>
+                                                                    <hr>
+                                                                    <form>
+                                                                        <div class="row">
+                                                                            <label for="fullname">نام و نام خانوادگی</label>
+                                                                            <div class="input-group mb-2">
+                                                                                <div class="input-group-prepend">
+                                                                  <span class="input-group-text">
+                                                                  <span class="c-icon cil-user"></span>
+                                                                </span>
+                                                                                </div>
+                                                                                <input class="form-control" type="text" id="fullname" placeholder="نام و نام خانوادگی" name="fullname" value="" required autofocus>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <label for="context">متن نظر</label>
+                                                                            <div class="input-group mb-2">
+                                                                                <div class="input-group-prepend">
+                                                                  <span class="input-group-text">
+                                                                  <span class="c-icon cil-wrap-text"></span>
+                                                                </span>
+                                                                                </div>
+                                                                                <textarea class="form-control" type="text" id="context" placeholder="متن نظر" name="context" required></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-12">
+                                                                                <input type="submit" name="submit" value="ثبت" class="btn btn-primary">
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <div class="clearfix">&nbsp;</div>
                             </div>
                         </div>
                     </div>
