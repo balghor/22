@@ -8,7 +8,7 @@ use Hekmatinasser\Verta\Verta;
 
 @section('content')
     <header class="c-header c-header-light c-header-fixed px-3" style="background-color: #f8ac06;">
-        <a class="c-header-brand" href="#">سازمان عمران شهرداری مشهد</a>
+        <a class="c-header-brand" href="#">سامانه شفافیت پروژه های عمرانی </a>
         <div class="c-header-nav">
             <a class="c-header-nav-item c-header-nav-link" data-scroll href="#home">خانه</a>
             <a class="c-header-nav-item c-header-nav-link" data-scroll href="#projects">پروژه ها</a>
@@ -18,15 +18,17 @@ use Hekmatinasser\Verta\Verta;
 <div id="home" class="homeBody">
     <div class="container-fluid">
         <div class="row mt-5">
-            <div class="col-lg-4 col-xl-4">
-                <img class="" src="{{ asset("/public/img/omranlogo1.png") }}" width="444" height="431">
+            <div class="col-lg-4 col-xl-4 align-content-sm-center align-content-xl-center align-content-lg-center align-content-md-center">
+                <img class="" src="{{ asset("/public/img/omranlogo2.png") }}" width="444" height="431">
+                <h5 class="text-center text-white mt-5"> اجرا : سازمان عمران شهرداری مشهد </h5>
+
             </div>
             <div class="col-lg-8 col-xl-5 mt-5">
                         <div class="w-100"></div>
                         <div class="d-flex">
                             <div class="p-5">
-                                <h3 class="text-center text-white ">سامانه اطلاع رسانی پروژه ها و شفافیت عملکرد</h3>
-                                <h5 class="text-center text-white ">سازمان عمران شهرداری مشهد</h5>
+                                <h3 class="text-center text-white ">سامانه شفافیت پروژه های عمرانی شهرداری مشهد  </h3>
+                                <h2 class="text-center text-white mt-5" >رصد عملکرد خادمان عمرانی مشهد </h2>
                             </div>
                         </div>
 
@@ -83,7 +85,11 @@ use Hekmatinasser\Verta\Verta;
                         <div class="card-footer">
                             <span class="text-muted">
                                 <span class="c-icon cil-av-timer"></span>
+                                @if($today->diffDays($endDate)>=0)
                                 <span class="">{{ $today->diffDays($endDate) }}    روز تا پایان </span>
+                                    @else
+                                    <span class="">روزشمار اتمام یافته</span>
+                                @endif
                             </span>
                             &middot;
                             <a class="btn btn-sm btn-outline-primary" href="{{ route("projectShow",$item)  }}">مشاهده</a>

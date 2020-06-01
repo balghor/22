@@ -72,19 +72,6 @@
                                       <option value="User">کاربر عادی</option>
                                   </select>
                               </div>
-                          </div><div class="col-6">
-                              <label for="access_project">دسترسی به پروژه</label>
-                              <div class="input-group mb-2">
-                                  <select id="access_project" name="access_project" class="select listproject">
-                                      <option value="" >همه پروژه ها</option>
-                                  <?php
-                                      $project = file_get_contents("http://cp.sazmanomran.org/ceo/index/record/list/project/");
-                                      $List = json_decode($project,true);
-                                      ?>
-                                      @foreach($List as $item => $value)
-                                          <option value="{{ $value['ID'] }}">{{$value['ProjectName']}}</option>
-                                      @endforeach
-                                  </select>                              </div>
                           </div>
                       </div>
                       <div class="clearfix">&nbsp;</div>

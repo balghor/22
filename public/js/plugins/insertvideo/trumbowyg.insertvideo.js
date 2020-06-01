@@ -50,7 +50,7 @@
                             var insertVideoCallback = function (v) {
                                 // controls should always be show otherwise the Video will
                                 // be invisible defeating the point of a wysiwyg
-                                var html = '<video controls';
+                                var html = '<video style="width:100%;height:400px" controls';
                                 if (v.src) {
                                     html += ' src=\'' + v.src + '\'';
                                 }

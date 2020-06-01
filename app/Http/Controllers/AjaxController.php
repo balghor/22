@@ -12,7 +12,7 @@ class AjaxController extends Controller
     //
     public function LoadProject(Request $request)
     {
-        $FileString = file_get_contents("http://cp.sazmanomran.org/ceo/index/record/list/project/");
+        $FileString = file_get_contents("http://172.25.95.3/ceo/index/record/list/project/");
         $List = json_decode($FileString, true);
         foreach ($List as $item => $value) {
             if ($value['ID'] == $request->id) {

@@ -20,11 +20,7 @@ class ProjectsController extends Controller
 
         }else{
             if(session("UserData")->type=="ProjectUser") {
-                if (empty(trim(session("UserData")->access_project))){
                     $projects = projects::orderByDesc('id')->paginate(20);
-                }else{
-                    $projects = projects::whereIn("cp_id",explode(",",session("UserData")->access_project))->orderByDesc('id')->paginate(20);
-                }
             }
         }
 
@@ -62,8 +58,6 @@ class ProjectsController extends Controller
             $request->has('cost') &&
             $request->has('active_state')) {
             $project = new projects();
-            $existProject = projects::where("cp_id","=",$request->input('cp_id'))->count();
-            if ($existProject == 0) {
                 $project->project_name = $request->input('project_name');
                 $project->start_date = $request->input('start_date');
                 $project->end_date = $request->input('end_date');
@@ -72,14 +66,13 @@ class ProjectsController extends Controller
                 $project->active = $request->input('active_state');
                 $project->description = $request->input('description');
                 $project->detail = $request->input('detail');
-                $project->cp_id = $request->input('cp_id');
                 $project->album = " ";
                 $project->user_id = session("UserData")->id;
                 $project->save();
                 return redirect()->route("project.create")->with("state","پروژه با موفقیت ثبت شد")->send();
-            }else{
-                return redirect()->back()->with("state","پروژه انتخاب شده قبل در لیست وجود دارد")->send();
-            }
+
+        }else{
+            return redirect()->back()->with("state","اطلاعات خواسته شده را وارد نمایید.")->send();
         }
     }
 

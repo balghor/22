@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-9 col-lg-8 col">
                                     <div class="row">
-                                        <div class="col align-content-lg-center">
+                                        <div class="col align-content-lg-center align-content-center align-content-md-center align-content-xl-center align-content-sm-center">
                                             <div id="flipdown" class="flipdown "></div>
                                         </div>
                                     </div>

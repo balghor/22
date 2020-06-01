@@ -44,8 +44,7 @@ class UsersController extends Controller
             $request->has('username') &&
             $request->has('password') &&
             $request->has('type') &&
-            $request->has('active') &&
-            $request->has('access_project')) {
+            $request->has('active')) {
             $users = new users();
             $existusers = users::where("username","=",$request->input('username'))->count();
             if ($existusers == 0) {
@@ -54,7 +53,7 @@ class UsersController extends Controller
                 $users->password = \Hash::make($request->input('password'));
                 $users->type = $request->input('type');
                 $users->active = $request->input('active');
-                $users->access_project = $request->input('access_project');
+                $users->access_project = "";
                 $users->save();
                 return redirect()->route("user.create")->with("state","کاربر با موفقیت اضافه شد")->send();
             }else{
@@ -101,13 +100,12 @@ class UsersController extends Controller
         //
         if ($request->has('full_name') &&
             $request->has('type') &&
-            $request->has('active') &&
-            $request->has('access_project')) {
+            $request->has('active')) {
                 $arrayList = [
                     "full_name" => $request->input('full_name'),
                     'type' => $request->input('type'),
                     'active' => $request->input('active'),
-                    'access_project' => $request->input('access_project')
+                    'access_project' => ""
                 ];
                 if(!empty($request->input('password'))){
                     $arrayList["password"] = \Hash::make($request->input('password'));

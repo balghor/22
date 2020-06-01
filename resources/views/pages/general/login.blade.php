@@ -10,7 +10,7 @@
                 <div class="card-group">
                     <div class="card p-4">
                         <div class="card-body">
-                            <h1>سامانه اطلاع رسانی پروژه های سازمان عمران</h1>
+                            <h1>سامانه شفافیت پروژه های <عمرانی></عمرانی></h1>
                             <p class="text-muted">اطلاعات خود را وارد نمایید</p>
                             @if( session("state"))
                                 <div class="clearfix">&nbsp;</div>

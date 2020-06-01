@@ -69,24 +69,6 @@
                                       <option value="User" @if($users->type == "User") {{ "selected" }}     @endif>کاربر عادی</option>
                                   </select>
                               </div>
-                          </div><div class="col-6">
-                              <label for="access_project">دسترسی به پروژه</label>
-                              <div class="input-group mb-2">
-                                  <div class="input-group-prepend">
-                                      <span class="input-group-text">
-                                      <span class="c-icon cil-tags"></span>
-                                    </span>
-                                  </div>
-                                  <select id="access_project" name="access_project" class="select listproject">
-                                      <option value="all" @if($users->access_project == "all") {{ "selected" }}     @endif >همه پروژه ها</option>
-                                  <?php
-                                      $project = file_get_contents("http://cp.sazmanomran.org/ceo/index/record/list/project/");
-                                      $List = json_decode($project,true);
-                                      ?>
-                                      @foreach($List as $item => $value)
-                                          <option value="{{ $value['ID'] }}" @if($users->access_project == $value['ID'] ) {{ "selected" }}     @endif>{{$value['ProjectName']}}</option>
-                                      @endforeach
-                                  </select>                              </div>
                           </div>
                       </div>
                       <div class="clearfix">&nbsp;</div>

@@ -30,21 +30,6 @@
                           <div class="clearfix">&nbsp;</div>
                       @endif
                       <div class="clearfix">&nbsp;</div>
-                      <label for="project_cp_id">پروژه مورد نظر را جهت بروزرسانی انتخاب نمایید</label>
-                      <div class="clearfix">
-                          <select id="project_cp_id" name="cp_id" class="select listproject">
-                              <?php
-                              $client = new \GuzzleHttp\Client();
-                              $project = $client->request('GET', "http://cp.sazmanomran.org/ceo/index/record/list/project/");
-                              $List = json_decode($project->getBody(),true);
-                              ?>
-                              @foreach($List as $item => $value)
-                                  <option value="{{ $value['ID'] }}">{{$value['ProjectName']}}</option>
-                                  @endforeach
-                          </select>
-                      </div>
-
-                      <div class="clearfix">&nbsp;</div>
                       <div class="row">
                           <div class="col-12">
                               <label for="project_name">نام پروژه</label>
@@ -171,26 +156,6 @@
     <script src="{{ asset('public/js/plugins/table/trumbowyg.table.min.js') }}"></script>
     <script src="{{ asset('public/js/plugins/insertvideo/trumbowyg.insertvideo.js') }}"></script>
     <script>
-        $(".listproject").on('select2:select', function (e) {
-            var data = e.params.data;
-            $.get("{{ route("load_project_id") }}",{id:data.id},function (data) {
-                $("#project_name").val(data.ProjectName);
-                $("#start_date").val(data.StartDate);
-                $("#end_date").val(data.EndDate);
-                $("#physical_progress").val(data.Physical);
-                $("#cost").val(data.Financial);
-                if(data.finished=="0"){
-                    $("#ccv2").select();
-                    $("#ccv2").click();
-                }
-                if(data.finished=="1"){
-                    $("#ccv3").select();
-                    $("#ccv3").click();
-                }
-                $("#description").val(data.description);
-
-            })
-        });
         $('.summernote').trumbowyg({
             lang:'fa',
             btnsDef: {
