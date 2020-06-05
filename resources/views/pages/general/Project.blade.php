@@ -265,9 +265,17 @@
                                                 <div class="row">
                                                     <div class="col-6 ">
                                                         <ul class="card">
-                                                            <li class="p-3"><b>حسین میگه:</b> <ul>
-                                                                     <li class="card">باشه انجام میشخ</li>
-                                                                </ul></li>
+                                                            @foreach($comments as  $Com)
+                                                                @if($Com->parents==0)
+                                                                    <li class="p-3"><b>{{ $Com->fullname }}:</b> {{ $Com->context }}<ul>
+                                                                            @foreach($comments as $reply)
+                                                                                @if($Com->id == $reply->parents)
+                                                                                    <li class="card"><b>{{ $reply->fullname }}:</b> {{ $reply->context }}</li>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        </ul></li>
+                                                                @endif
+                                                            @endforeach
                                                         </ul>
                                                     </div>
                                                     <div class="col-6 border-right">
@@ -275,14 +283,16 @@
                                                                 <div class="col-12 pr-4">
                                                                     <h4>ثبت انتقادات ، نظرات یا پیشنهادات</h4>
                                                                     <hr>
-                                                                    <form>
+                                                                    <form action="{{ route("insert_comment") }}" method="post">
+                                                                        @csrf
+                                                                        <input type="hidden" name="pid" value="{{ $id }}">
                                                                         <div class="row">
                                                                             <label for="fullname">نام و نام خانوادگی</label>
                                                                             <div class="input-group mb-2">
                                                                                 <div class="input-group-prepend">
-                                                                  <span class="input-group-text">
-                                                                  <span class="c-icon cil-user"></span>
-                                                                </span>
+                                                                                  <span class="input-group-text">
+                                                                                  <span class="c-icon cil-user"></span>
+                                                                                </span>
                                                                                 </div>
                                                                                 <input class="form-control" type="text" id="fullname" placeholder="نام و نام خانوادگی" name="fullname" value="" required autofocus>
                                                                             </div>

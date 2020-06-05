@@ -49,3 +49,4 @@ Route::middleware("Dologin")->group(function () {
         Route::get("delete_file", "AjaxController@delete_file")->name("delete_file");
     });
 });
+Route::post("/insert_comment_project","CommentController@store")->name("insert_comment");

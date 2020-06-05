@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\projects;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,7 @@ class HomeController extends Controller
     }
     public function project($id){
         $project = projects::where("active",1)->findOrFail($id);
-        return view("pages.general.Project",compact("project"));
+        $comments = Comment::where("pid",$id)->where("active",1)->get();
+        return view("pages.general.Project",["project"=>$project,"comments"=>$comments,"id"=>$id]);
     }
 }

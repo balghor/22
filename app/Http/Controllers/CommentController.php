@@ -38,6 +38,17 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         //
+        if (!empty($request->fullname) && !empty($request->pid) && !empty($request->context)){
+            $comment = new Comment();
+            $comment->fullname = $request->fullname;
+            $comment->pid = $request->pid;
+            $comment->context = $request->context;
+            $comment->save();
+            redirect()->back()->with("StateOK","نظر شما ثبت و پس از بررسی نمایش داده خواهد شد")->send();
+
+        }else{
+            redirect()->back()->with("StateError","اطلاعات خواسته شده را وارد نمایید")->send();
+        }
     }
 
     /**
