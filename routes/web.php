@@ -48,5 +48,6 @@ Route::middleware("Dologin")->group(function () {
         Route::get("load_project", "AjaxController@LoadProject")->name("load_project_id");
         Route::get("delete_file", "AjaxController@delete_file")->name("delete_file");
     });
+    Route::get("/agree_comment/{id}","CommentController@AgreeComment")->name("agree");
 });
 Route::post("/insert_comment_project","CommentController@store")->name("insert_comment");

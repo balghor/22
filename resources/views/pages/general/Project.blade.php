@@ -283,6 +283,16 @@
                                                                 <div class="col-12 pr-4">
                                                                     <h4>ثبت انتقادات ، نظرات یا پیشنهادات</h4>
                                                                     <hr>
+                                                                    @if(session("StateOK"))
+                                                                        <div class="alert alert-success" role="alert">
+                                                                            {{ session("StateOK") }}
+                                                                        </div>
+                                                                        @endif
+                                                                    @if(session("StateError"))
+                                                                        <div class="alert alert-danger" role="alert">
+                                                                            {{ session("StateError") }}
+                                                                        </div>
+                                                                        @endif
                                                                     <form action="{{ route("insert_comment") }}" method="post">
                                                                         @csrf
                                                                         <input type="hidden" name="pid" value="{{ $id }}">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\projects;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -68,9 +69,16 @@ class CommentController extends Controller
      * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comment $comment)
+    public function edit($id)
     {
-        //
+        if(session("UserData")->type=="Manager" || session("UserData")->type=="ProjectUser") {
+
+            $comment = Comment::findOrFail($id);
+            $ProjectName= projects::find($comment->pid);
+            return view("pages.editcomment",["comment"=>$comment,"ProjectName"=>$ProjectName->project_name]);
+        }else{
+            return redirect()->route("dashboard");
+        }
     }
 
     /**
@@ -83,6 +91,20 @@ class CommentController extends Controller
     public function update(Request $request, Comment $comment)
     {
         //
+        if (!empty($request->pid) && !empty($request->parents) && !empty($request->reply)){
+            $comment_new_modir = new Comment();
+            \DB::table("comments")->where("id",$request->parents)->update(["active"=>1]);
+            $comment_new_modir->fullname= "مدیر سایت";
+            $comment_new_modir->context = $request->reply;
+            $comment_new_modir->pid = $request->pid;
+            $comment_new_modir->active = 1;
+            $comment_new_modir->parents = $request->parents;
+            $comment_new_modir->save();
+            return redirect()->route("comment.index")->with("state","اطلاعات با موفقیت ویرایش شد")->send();
+
+        }else{
+            return redirect()->route("comment.index")->with("state","مشکلی در ثبت اطلاعات به وجود آمده است")->send();
+        }
     }
 
     /**
@@ -91,8 +113,19 @@ class CommentController extends Controller
      * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy($id)
     {
-        //
+        if(session("UserData")->type=="Manager" || session("UserData")->type=="ProjectUser") {
+
+            Comment::destroy($id);
+            return  redirect()->back()->with("state","اطلاعات مورد نظر با موفقیت حذف شد")->send();
+        }else{
+            return redirect()->route("dashboard");
+        }
+    }
+
+    public  function  AgreeComment($id){
+        \DB::table("comments")->where("id",$id)->update(["active"=>1]);
+        redirect()->back()->with("state","اطلاعات با موفقیت تغییر یافت")->send();
     }
 }

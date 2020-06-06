@@ -48,7 +48,8 @@
                                             @csrf
                                             @method('DELETE')
                                             <input type="hidden" value="{{ $List->id }}" name="id">
-                                            <a class="btn btn-sm btn-outline-warning align-baseline" href="{{ route("comment.edit",$List) }}"><span class="c-icon cil-applications"></span></a>
+                                            <a class="btn btn-sm btn-outline-warning align-baseline" href="{{ route("comment.edit",$List) }}"><span class="c-icon cil-comment-square" title="پاسخ به نظر"></span></a>
+                                            <a class="btn btn-sm btn-outline-success align-baseline" href="{{ route("agree",$List) }}"><span class="c-icon cil-playlist-add" title="تایید نظر"></span></a>
                                             <button type="submit" class="btn btn-sm btn-outline-danger align-baseline" ><span class="c-icon cil-remove" ></span></button>
                                         </form>
                                     </td>
