@@ -4,6 +4,7 @@
             <li class="c-sidebar-nav-title">مدیریت</li>
             <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route("dashboard") }}"><span class="c-sidebar-nav-icon c-icon cil-home"></span> خانه</a></li>
             @if(session("UserData")->type=="Manager")
+            <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route("category.index") }}"><span class="c-sidebar-nav-icon c-icon cil-object-group"></span>  گروه بندی ها</a></li>
             <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route("project.create") }}"><span class="c-sidebar-nav-icon c-icon cil-apps-settings"></span>  افزودن پروژه</a></li>
             @endif
             <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route("project.index") }}"><span class="c-sidebar-nav-icon c-icon cil-blur-circular"></span>  مدیریت پروژه</a></li>
