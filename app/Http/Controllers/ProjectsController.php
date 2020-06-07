@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\projects;
 use Illuminate\Http\Request;
 class ProjectsController extends Controller
@@ -36,7 +37,9 @@ class ProjectsController extends Controller
     {
         //
         if(session("UserData")->type=="Manager") {
-            return view("pages.addproject");
+            $category = new Category();
+            $CatList = $category->all();
+            return view("pages.addproject",compact("CatList"));
         }else{
             return redirect()->route("dashboard");
         }
@@ -59,6 +62,7 @@ class ProjectsController extends Controller
             $request->has('active_state')) {
             $project = new projects();
                 $project->project_name = $request->input('project_name');
+                $project->category_id = $request->input('category_id');
                 $project->start_date = $request->input('start_date');
                 $project->end_date = $request->input('end_date');
                 $project->physical_progress = $request->input('physical_progress');
@@ -66,6 +70,10 @@ class ProjectsController extends Controller
                 $project->active = $request->input('active_state');
                 $project->description = $request->input('description');
                 $project->detail = $request->input('detail');
+                $project->contractor = $request->input('contractor');
+                $project->karfarma = $request->input('karfarma');
+                $project->moshaver = $request->input('moshaver');
+                $project->ordered = $request->input('ordered');
                 $project->album = " ";
                 $project->user_id = session("UserData")->id;
                 $project->save();
@@ -99,7 +107,9 @@ class ProjectsController extends Controller
         if(session("UserData")->type=="Manager" || session("UserData")->type=="ProjectUser") {
 
             $projects = projects::findOrFail($id);
-        return view("pages.editproject",compact("projects"));
+            $category = new Category();
+            $CatList = $category->all();
+        return view("pages.editproject",["projects"=>$projects,"CatList"=>$CatList]);
         }else{
             return redirect()->route("dashboard");
         }
@@ -123,10 +133,15 @@ class ProjectsController extends Controller
             \DB::table("projects")->where("id","=",$request->id)->update([
             "start_date" => $request->input('start_date'),
             "end_date" => $request->input('end_date'),
+            "category_id" => $request->input('category_id'),
             "physical_progress" => $request->input('physical_progress'),
             "cost" => $request->input('cost'),
             "active" => $request->input('active_state'),
             "description" => $request->input('description'),
+            "contractor" => $request->input('contractor'),
+            "karfarma" => $request->input('karfarma'),
+            "moshaver" => $request->input('moshaver'),
+            "ordered" => $request->input('ordered'),
             "detail" => $request->input('detail')]);
             return redirect()->route("project.index")->with("state","پروژه با موفقیت ویرایش شد")->send();
 

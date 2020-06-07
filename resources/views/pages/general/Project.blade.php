@@ -41,6 +41,28 @@
                                         <div class="col-5">مدت زمان پروژه:</div>
                                         <div class="col-7"><b>{{ $startDate->diffDays($endDate) }} روز </b></div>
                                     </div>
+                                    @if ($project->karfarma!="")
+                                        <div class="clearfix">&nbsp;</div>
+                                        <div class="row">
+                                            <div class="col-5">کارفرما:</div>
+                                            <div class="col-7"><b>{{ $project->karfarma }}</b></div>
+                                        </div>
+                                    @endif
+                                    @if ($project->contractor!="")
+                                        <div class="clearfix">&nbsp;</div>
+                                        <div class="row">
+                                            <div class="col-5">پیمانکار:</div>
+                                            <div class="col-7"><b>{{ $project->contractor }}</b></div>
+                                        </div>
+                                    @endif
+                                    @if ($project->moshaver!="")
+                                        <div class="clearfix">&nbsp;</div>
+                                        <div class="row">
+                                            <div class="col-5">مشاور:</div>
+                                            <div class="col-7"><b>{{ $project->moshaver }}</b></div>
+                                        </div>
+                                    @endif
+
                                     <hr>
                                     <div class="row">
                                         <div class="col-12">{{ $project->description }}</div>
@@ -304,7 +326,7 @@
                                                                                   <span class="c-icon cil-user"></span>
                                                                                 </span>
                                                                                 </div>
-                                                                                <input class="form-control" type="text" id="fullname" placeholder="نام و نام خانوادگی" name="fullname" value="" required autofocus>
+                                                                                <input class="form-control" type="text" id="fullname" placeholder="نام و نام خانوادگی" name="fullname" value="" required >
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">

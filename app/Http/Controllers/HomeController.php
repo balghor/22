@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     //
     public function HomeIndex(){
-        $projects = projects::where("active",1)->orderByDesc("id")->get(['*']);
+        $projects = projects::where("active",1)->orderBy("ordered")->get(['*']);
         return view("pages.general.Home",compact("projects"));
     }
     public function project($id){

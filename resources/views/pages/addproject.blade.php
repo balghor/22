@@ -45,6 +45,24 @@
                       </div>
                       <div class="clearfix">&nbsp;</div>
                       <div class="row">
+                          <div class="col-12">
+                              <label for="category_id">گروه پروژه</label>
+                              <div class="input-group mb-2">
+                                  <div class="input-group-prepend">
+                                      <span class="input-group-text">
+                                      <span class="c-icon cil-object-group"></span>
+                                    </span>
+                                  </div>
+                                  <select class="form-control" type="text" id="category_id" placeholder="گروه بندی پروژه" name="category_id" required >
+                                      @foreach($CatList as $cat)
+                                            <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                      @endforeach
+                                  </select>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="clearfix">&nbsp;</div>
+                      <div class="row">
                           <div class="col-6">
                               <label for="start_date">تاریخ شروع روزشمار پروژه</label>
                               <div class="input-group mb-2">
@@ -56,7 +74,7 @@
                                   <input class="form-control jalali-date-input" type="text" id="start_date" placeholder="تاریخ شروع روزشمار پروژه" name="start_date" value="" required autofocus>
                               </div>
                           </div><div class="col-6">
-                              <label for="start_date">تاریخ پایان روزشمار پروژه</label>
+                              <label for="end_date">تاریخ پایان روزشمار پروژه</label>
                               <div class="input-group mb-2">
                                   <div class="input-group-prepend">
                                       <span class="input-group-text">
@@ -70,7 +88,55 @@
                       <div class="clearfix">&nbsp;</div>
                       <div class="row">
                           <div class="col-6">
-                              <label for="start_date">درصد پیشرفت فیزیکی</label>
+                              <label for="karfarma">کارفرما</label>
+                              <div class="input-group mb-2">
+                                  <div class="input-group-prepend">
+                                      <span class="input-group-text">
+                                      <span class="c-icon cil-control"></span>
+                                    </span>
+                                  </div>
+                                  <input class="form-control" type="text" id="karfarma" placeholder="کارفرما پروژه" name="karfarma" value="" required autofocus>
+                              </div>
+                          </div><div class="col-6">
+                              <label for="contractor">پیمانکار</label>
+                              <div class="input-group mb-2">
+                                  <div class="input-group-prepend">
+                                      <span class="input-group-text">
+                                      <span class="c-icon cil-coffee"></span>
+                                    </span>
+                                  </div>
+                                  <input class="form-control" type="text" id="contractor" placeholder="پیمانکار پروژه" name="contractor" value="" required autofocus>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="clearfix">&nbsp;</div>
+                      <div class="row">
+                          <div class="col-6">
+                              <label for="moshaver">مشاور</label>
+                              <div class="input-group mb-2">
+                                  <div class="input-group-prepend">
+                                      <span class="input-group-text">
+                                      <span class="c-icon cil-globe-alt"></span>
+                                    </span>
+                                  </div>
+                                  <input class="form-control" type="text" id="moshaver" placeholder="مشاور پروژه" name="moshaver" value="" >
+                              </div>
+                          </div><div class="col-6">
+                              <label for="ordered">شماره ردیف</label>
+                              <div class="input-group mb-2">
+                                  <div class="input-group-prepend">
+                                      <span class="input-group-text">
+                                      <span class="c-icon cil-input"></span>
+                                    </span>
+                                  </div>
+                                  <input class="form-control" type="number" id="ordered" placeholder="شماره ردیف" name="ordered" min="1" value="1" >
+                              </div>
+                          </div>
+                      </div>
+                      <div class="clearfix">&nbsp;</div>
+                      <div class="row">
+                          <div class="col-6">
+                              <label for="physical_progress">درصد پیشرفت فیزیکی</label>
                               <div class="input-group mb-2">
                                   <div class="input-group-prepend">
                                       <span class="input-group-text">
@@ -80,7 +146,7 @@
                                   <input class="form-control" type="text" id="physical_progress" placeholder="درصد پیشرفت فیزیکی" name="physical_progress" value="" required autofocus>
                               </div>
                           </div><div class="col-6">
-                              <label for="start_date">درصد پیشرفت ریالی</label>
+                              <label for="cost">درصد پیشرفت ریالی</label>
                               <div class="input-group mb-2">
                                   <div class="input-group-prepend">
                                       <span class="input-group-text">
