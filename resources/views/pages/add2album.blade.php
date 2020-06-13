@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="card-header">
-                        <h6>افزودن عکس به آلبوم پروژه  </h6>
+                        <h6>افزودن عکس به اسلایدر پروژه  </h6>
                     </div>
                     @if( session("state"))
                         <div class="alert alert-primary" role="alert">

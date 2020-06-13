@@ -14,6 +14,7 @@ use App\Http\Middleware;
 */
 
 Route::get('/', "HomeController@HomeIndex")->name("Home");
+Route::get('/category/{id}', "HomeController@category")->name("category");
 Route::get('/project_show/{id}', "HomeController@project")->name("projectShow");
 
 
@@ -38,7 +39,9 @@ Route::middleware("Dologin")->group(function () {
     Route::resource("/media", "MediasController");
     Route::resource("/comment", "CommentController");
     Route::resource("/category", "CategoryController");
-    Route::resource("/album", "AlbumController");
+    Route::get("/album/{id}","AlbumController@index")->name("album.index");
+    Route::post("/album/insert","AlbumController@store")->name("album.store");
+    Route::delete("/album/delete/{id}","AlbumController@destroy")->name("album.delete");
 
     Route::get("/add2album/{id}", "AlbumModifyController@album_page")->name('add2album');
 

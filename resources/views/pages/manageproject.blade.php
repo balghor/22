@@ -53,9 +53,10 @@
                                             @csrf
                                             @method('DELETE')
                                             <input type="hidden" value="{{ $List->id }}" name="id">
-                                            <a class="btn btn-sm btn-outline-warning align-baseline" href="{{ route("project.edit",$List->id) }}"><span class="c-icon cil-pencil"></span></a>
-                                            <a class="btn btn-sm btn-outline-primary align-baseline" href="{{ route("add2album",$List) }}"><span class="c-icon cil-image-plus"></span></a>
-                                            <button type="submit" class="btn btn-sm btn-outline-danger align-baseline" ><span class="c-icon cil-remove" ></span></button>
+                                            <a class="btn btn-sm btn-outline-dark align-baseline" title="مدیریت آلبوم پروژه" href="{{ route("album.index",["id"=>$List->id]) }}"><span class="c-icon cil-library-add"></span></a>
+                                            <a class="btn btn-sm btn-outline-warning align-baseline" title="ویرایش" href="{{ route("project.edit",$List->id) }}"><span class="c-icon cil-pencil"></span></a>
+                                            <a class="btn btn-sm btn-outline-primary align-baseline" title="افزودن عکس شاخص" href="{{ route("add2album",$List) }}"><span class="c-icon cil-image-plus"></span></a>
+                                            <button type="submit" class="btn btn-sm btn-outline-danger align-baseline" title="حذف" ><span class="c-icon cil-remove" ></span></button>
                                         </form>
                                     </td>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Album;
 use App\medias;
 use Illuminate\Http\Request;
 

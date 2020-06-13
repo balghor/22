@@ -63,6 +63,10 @@
                             </div>
                             <div class="col-6">
                                 @if($category->count())
+                                    <div class="clearfix">&nbsp;</div>
+                                        <h5>لیست گروه ها</h5>
+                                    <hr>
+                                    <div class="clearfix">&nbsp;</div>
                                     <table id="datatable_group" class="table table-clear table-hover table-responsive-lg table-bordered" >
                                         <thead>
                                         <tr>

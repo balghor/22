@@ -7,13 +7,38 @@ use Hekmatinasser\Verta\Verta;
 @section("backgroundCss","")
 
 @section('content')
-    <header class="c-header c-header-light c-header-fixed px-3" style="background-color: #f8ac06;">
-        <a class="c-header-brand" href="#">سامانه شفافیت پروژه های عمرانی </a>
-        <div class="c-header-nav">
-            <a class="c-header-nav-item c-header-nav-link" data-scroll href="#home">خانه</a>
-            <a class="c-header-nav-item c-header-nav-link" data-scroll href="#projects">پروژه ها</a>
-            <a class="c-header-nav-item c-header-nav-link" href="{{ route("show_login_vip") }}">کاربران ویژه</a>
-        </div>
+    <header class="">
+           <nav class="navbar navbar-expand-lg navbar-light ">
+            <a class="navbar-brand" href="#">سامانه شفافیت پروژه های عمرانی </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" data-scroll href="{{ route("Home") }}">خانه </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                            پروژه ها
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @foreach($category as $cat)
+                            <a class="dropdown-item" href="{{ route("category",["id"=>$cat->id]) }}">{{ $cat->name }}</a>
+                            @endforeach
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route("show_login_vip") }}" >کاربران ویژه</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0" action="{{ route("Home") }}" name="search" method="get">
+                    <input class="form-control mr-sm-2" type="search" name="search" placeholder="جستجو پروژه" aria-label="جستجو">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">بگرد</button>
+                </form>
+            </div>
+        </nav>
     </header>
 <div id="home" class="homeBody">
     <div class="container-fluid">
@@ -39,64 +64,75 @@ use Hekmatinasser\Verta\Verta;
     <div class="clearfix"></div>
     <div id="projects">
         <div class="clearfix">&nbsp;</div>
-        <div class="container">
+        <div class="container card">
+            <div class="clearfix">&nbsp;</div>
+
+            <h4>لیست پروژه ها</h4>
+            <hr>
+            <div class="clearfix">&nbsp;</div>
             <div class="row">
-                @php
-                $counter=0;
-                @endphp
-                @foreach($projects as $item)
-                    @php
-                    if($counter >=4){
-                            echo '<div class="w-100"></div>';
-                            $counter=1;
-                        }else{
-                            $counter++;
-                        }
+                <div class="col-lg-12">
+                    <div class="row">
 
-                        $startDate = Verta::parse($item->start_date);
-                        $today = new Verta();
-                        $endDate = Verta::parse($item->end_date);
-                    @endphp
-                    <div class="col-sm">
-                    <div class="card" style="height: 25rem">
-                        <div class="card-header"><span class="c-icon cil-list"></span>&nbsp;{{ $item->project_name }}</div>
-                        <div class="card-body">
-                            <div class="card-img-top text-center align-content-center">
-                                @php
-                                    $arrImage = @trim($item->album,"[]\"");
-                                    $pic = @explode("\",\"",$arrImage);
-                                @endphp
-                                @if(@count($pic) && trim($pic[0])!="")
-                                    <img src="{{ url("uploads/".$pic[0]) }}" style="width: 100%;height: 150px" >
-                                    @else
-                                    <div class="cil-image1" style="width: 100%;height: 150px;font-size: 10rem;color: #d69405"></div>
-                                @endif
-                            </div>
-                            <div class="clearfix">&nbsp;</div>
-                            <div class="card-text">
-                                @if(strlen($item->description)>100)
-                                    {{ mb_substr($item->description,0,100)." ..." }}
-                                    @else
-                                    {{ $item->description }}
+                        @php
+                            $counter=0;
+                        @endphp
+                        @foreach($projects as $item)
+                            @php
+                                if($counter >=2){
+                                        echo '<div class="w-100"></div>';
+                                        $counter=1;
+                                    }else{
+                                        $counter++;
+                                    }
 
-                                @endif
-                            </div>
-                        </div>
-                        <div class="card-footer">
+                                    $startDate = Verta::parse($item->start_date);
+                                    $today = new Verta();
+                                    $endDate = Verta::parse($item->end_date);
+                            @endphp
+                            <div class="col-lg">
+                                <div class="card" style="height: 25rem">
+                                    <div class="card-header"><span class="c-icon cil-list"></span>&nbsp;{{ $item->project_name }}</div>
+                                    <div class="card-body">
+                                        <div class="card-img-top text-center align-content-center">
+                                            @php
+                                                $arrImage = @trim($item->album,"[]\"");
+                                                $pic = @explode("\",\"",$arrImage);
+                                            @endphp
+                                            @if(@count($pic) && trim($pic[0])!="")
+                                                <img src="{{ url("uploads/".$pic[0]) }}" style="width: 100%;height: 150px" >
+                                            @else
+                                                <div class="cil-image1" style="width: 100%;height: 150px;font-size: 10rem;color: #d69405"></div>
+                                            @endif
+                                        </div>
+                                        <div class="clearfix">&nbsp;</div>
+                                        <div class="card-text">
+                                            @if(strlen($item->description)>100)
+                                                {{ mb_substr($item->description,0,100)." ..." }}
+                                            @else
+                                                {{ $item->description }}
+
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
                             <span class="text-muted">
                                 <span class="c-icon cil-av-timer"></span>
                                 @if($today->diffDays($endDate)>=0)
-                                <span class="">{{ $today->diffDays($endDate) }}    روز تا پایان </span>
-                                    @else
+                                    <span class="">{{ $today->diffDays($endDate) }}    روز تا پایان </span>
+                                @else
                                     <span class="">روزشمار اتمام یافته</span>
                                 @endif
                             </span>
-                            &middot;
-                            <a class="btn btn-sm btn-outline-primary" href="{{ route("projectShow",$item)  }}">مشاهده</a>
-                        </div>
+                                        &middot;
+                                        <a class="btn btn-sm btn-outline-primary" href="{{ route("projectShow",$item)  }}">مشاهده</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
+
                 </div>
-                @endforeach
             </div>
         </div>
         <div class="clearfix">&nbsp;</div>
@@ -104,12 +140,4 @@ use Hekmatinasser\Verta\Verta;
 @endsection
 
 @section('javascript')
-
-    <script>
-        var scroll = new SmoothScroll('a[href*="#"]', {
-            speed: 500,
-            speedAsDuration: true
-        });
-        $('#loginmodal').modal()
-    </script>
 @endsection
