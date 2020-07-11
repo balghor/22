@@ -80,7 +80,8 @@
                                 <script type="text/javascript">
                                     document.addEventListener('DOMContentLoaded', () => {
                                         @php
-                                            $v = new \Carbon\Carbon($endDate->formatGregorian('Y-m-d')." 07:30:00");
+                                            $v = new \Carbon\Carbon($endDate->formatGregorian('Y-m-d')." 20:30:00");
+                                            $v->subDay();
                                         @endphp
                                         // Unix timestamp (in seconds) to count down to
                                         var twoDaysFromNow = ({{ $v->getTimestamp() }});

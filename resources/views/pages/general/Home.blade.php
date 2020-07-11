@@ -42,18 +42,18 @@ use Hekmatinasser\Verta\Verta;
     </header>
 <div id="home" class="homeBody">
     <div class="container-fluid">
+        <div class="w-100 mt-5">&nbsp;</div>
         <div class="row mt-5">
-            <div class="col-lg-4 col-xl-4 align-content-sm-center align-content-xl-center align-content-lg-center align-content-md-center">
-                <img class="" src="{{ asset("/public/img/omranlogo2.png") }}" width="444" height="431">
-                <h5 class="text-center text-white mt-5"> اجرا : سازمان عمران شهرداری مشهد </h5>
-
+            <div class="col-4  align-content-end bg-darkness" style="text-align: left;line-height: 259px">
+                <img class="rbimg" src="{{ asset("/public/img/logo-s.png") }}" width="259" height="194">
             </div>
-            <div class="col-lg-8 col-xl-5 mt-5">
-                        <div class="w-100"></div>
-                        <div class="d-flex">
+            <div class="col-4"></div>
+            <div class="col-4 bg-darkness" style="text-align: left;line-height: 259px">
+                        <div class="d-flex mobile">
                             <div class="p-5">
-                                <h3 class="text-center text-white ">سامانه شفافیت پروژه های عمرانی شهرداری مشهد  </h3>
-                                <h2 class="text-center text-white mt-5" >رصد عملکرد خادمان عمرانی مشهد </h2>
+                                <h4 class="text-center text-white rb ">سامانه شفافیت پروژه های عمرانی شهرداری مشهد  </h4>
+                                <h2 class="text-center text-white mt-5 rb" >رصد عملکرد خادمان عمرانی مشهد </h2>
+                                <h5 class="text-center text-white mt-3 rb"> اجرا : سازمان عمران شهرداری مشهد </h5>
                             </div>
                         </div>
 
@@ -61,6 +61,7 @@ use Hekmatinasser\Verta\Verta;
         </div>
     </div>
 </div>
+<div class="">
     <div class="clearfix"></div>
     <div id="projects">
         <div class="clearfix">&nbsp;</div>
@@ -69,28 +70,36 @@ use Hekmatinasser\Verta\Verta;
 
             <h4>لیست پروژه ها</h4>
             <hr>
+            <div class="clearfix"></div>
+            <div class="">
+                <div class="">
+                    <ul id="autoWidth" class="">
+                        @foreach($category as $cat)
+                            @php
+                                $album = DB::table("projects")->select("album")->where("category_id",$cat->id)->first();
+                                    $arrImage = @trim($album->album,"[]\"");
+                                    $pic = @explode("\",\"",$arrImage);
+                            @endphp
+                            <li class="item-a" @if(@count($pic) && trim($pic[0])!="") style="background: url('{{ url("/uploads/".$pic[0]) }}') no-repeat center; background-size: cover" @endif ><div class="item-ac" ><div class="link-bkg"><a href="{{ route("category",["id"=>$cat->id]) }}">{{ $cat->name }}</a></div></div></li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <hr>
             <div class="clearfix">&nbsp;</div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
 
-                        @php
-                            $counter=0;
-                        @endphp
+
                         @foreach($projects as $item)
                             @php
-                                if($counter >=2){
-                                        echo '<div class="w-100"></div>';
-                                        $counter=1;
-                                    }else{
-                                        $counter++;
-                                    }
-
-                                    $startDate = Verta::parse($item->start_date);
-                                    $today = new Verta();
-                                    $endDate = Verta::parse($item->end_date);
+                                $startDate = Verta::parse($item->start_date);
+                                $today = new Verta();
+                                $endDate = Verta::parse($item->end_date);
                             @endphp
-                            <div class="col-lg">
+                            <div class="col col-auto" style="width: 22rem;">
                                 <div class="card" style="height: 25rem">
                                     <div class="card-header"><span class="c-icon cil-list"></span>&nbsp;{{ $item->project_name }}</div>
                                     <div class="card-body">
@@ -137,6 +146,7 @@ use Hekmatinasser\Verta\Verta;
         </div>
         <div class="clearfix">&nbsp;</div>
     </div>
+</div>
 @endsection
 
 @section('javascript')

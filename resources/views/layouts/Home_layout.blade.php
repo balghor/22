@@ -22,6 +22,7 @@
     <link href="{{ asset('public/css/flipdown.css') }}" rel="stylesheet">
     <link href="{{ asset('public/css/swiper.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/css/Chart.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/css/lightslider.min.css') }}" rel="stylesheet">
     <!-- Main styles for this application-->
     @yield('css')
     <link href="{{ asset('public/css/style.css') }}" rel="stylesheet">
@@ -45,6 +46,7 @@
 <script type="text/javascript" src="{{ asset("public/js/jquery.min.js") }}"></script>
 <script type="text/javascript" src="{{ asset("public/js/popper.min.js") }}"></script>
 <script type="text/javascript" src="{{ asset("public/js/coreui.min.js") }}"></script>
+<script type="text/javascript" src="{{ asset("public/js/lightslider.min.js") }}"></script>
 
 <script type="text/javascript" src="{{ asset("public/js/flipdown.js") }}"></script>
 <script type="text/javascript" src="{{ asset("public/js/swiper.min.js") }}"></script>
@@ -64,6 +66,35 @@
                         nextEl: '.swiper-button-next',
                         prevEl: '.swiper-button-prev',
                     },
+                });
+                $(document).ready(function() {
+                    $('#autoWidth').lightSlider({
+                        item:4,
+                        auto:true,
+                        loop:true,
+                        pauseOnHover: true,
+                        slideMove:2,
+                        easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
+                        speed:600,
+                        rtl:true,
+                        responsive : [
+                            {
+                                breakpoint:800,
+                                settings: {
+                                    item:4,
+                                    slideMove:1,
+                                    slideMargin:6,
+                                }
+                            },
+                            {
+                                breakpoint:480,
+                                settings: {
+                                    item:2,
+                                    slideMove:1
+                                }
+                            }
+                        ]
+                    });
                 });
             </script>
 </body>

@@ -92,8 +92,7 @@
                                             </tr>
                                         @endforeach
                                         </tbody>
-                                        <tfoot>
-                                        <tr>
+                                        <tfoot>                                        <tr>
                                             <th>نام گروه</th>
                                             <th>شماره ردیف</th>
                                             <th></th>
